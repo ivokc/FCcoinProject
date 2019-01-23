@@ -12,6 +12,7 @@ export default class UIIconInput extends React.Component {
         <TextInput 
           {...this.props}
           style={styles.textInput}
+          placeholderTextColor='rgba(204,204,204,1)'
           onChangeText={(text) => this.setState({text})}
           value={this.state.text}
         />
@@ -25,7 +26,7 @@ export default class UIIconInput extends React.Component {
 }
 const styles = StyleSheet.create({
   container:{
-    height:50,
+    height:75,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
@@ -37,6 +38,8 @@ const styles = StyleSheet.create({
   },
   textInput:{
     flex:9,
-    lineHeight:50
+    fontSize:20,
+    fontFamily:'PingFangSC-Regular'
+
   }
 });

@@ -1,40 +1,28 @@
 import React from "react";
-import { View,StyleSheet,TextInput} from "react-native";
-import Icon from 'react-native-vector-icons/AntDesign';
+import { View,StyleSheet,TouchableHighlight,Text} from "react-native";
 
 export default class UIIconInput extends React.Component {
   state = {text:''}
   render() {
     return (
-      <View style={[styles.container,this.props.style]}>
-        <Icon style={styles.icon} name={this.props.icon} size={30} color="#CCCCCC" />
-        <TextInput 
-          {...this.props}
-          style={styles.textInput}
-          onChangeText={(text) => this.setState({text})}
-          value={this.state.text}
-        />
-
-
-      </View>
-
-      
+      <TouchableHighlight style={[styles.container,this.props.style]} underlayColor="white"
+        onPress={this.props.onPress}>
+        <Text style={styles.text}> {this.props.text} </Text>
+      </TouchableHighlight>
     );
   }
 }
 const styles = StyleSheet.create({
   container:{
-    height:50,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
+    height:55,
+    backgroundColor:'rgba(114,109,254,1)',
+    borderRadius:45,
     alignItems: 'center',
-    borderBottomWidth:1,
-    borderColor:'rgba(237,237,237,1)'
+    justifyContent:'center'
   },
-  icon:{
-    flex:1
-  },
-  textInput:{
-    flex:9,
+  text:{
+    fontSize:18,
+    fontFamily:'PingFangSC-Regular',
+    color:'rgba(255,255,255,1)'
   }
 });

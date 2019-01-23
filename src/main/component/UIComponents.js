@@ -9,3 +9,4 @@
  */
 
 export { default as UIIconInput } from './formItem/UIIconInput';
+export { default as UIButton} from './formItem/UIButton';
