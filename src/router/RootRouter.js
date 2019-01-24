@@ -48,7 +48,7 @@ const RootRouter = createSwitchNavigator(
   {
     AuthLoading: AuthLoading,
     App: AppStack,
-    Auth: AppStack,
+    Auth: AuthStack,
   },
   {
     initialRouteName: 'AuthLoading',

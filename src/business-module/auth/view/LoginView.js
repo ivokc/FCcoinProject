@@ -17,7 +17,6 @@ export default class LoginView extends React.Component {
     this.props.handleLogin({username,password});
   }
   render() {
-    console.log('this.propsasfddf',this.props);
     
     return (
         <View style={styles.container}>

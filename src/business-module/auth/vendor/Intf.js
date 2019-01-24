@@ -3,13 +3,13 @@
 */
 function loginIntf({username,password}) {
   const params = {
-    username:'9E19A22A2A5887F3E03B80D54359442F',
-    newpassword:'70388E628F9968515833B07899D03BB7',
+    username,
+    password,
     __ajax:'json',
-    __sid:'2153428619324c0f91b4d7edd702179b'
+    __login:true
 
   };
-  return Just.postRequest(Url.changePWD,params);
+  return Just.getRequest(Url.login,params);
 }
 
 export {

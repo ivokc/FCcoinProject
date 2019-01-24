@@ -2,11 +2,12 @@ import { connect } from 'react-redux';
 import LoginView from '../view/LoginView';
 import {loginTask} from '../vendor/Task';
 
-const handleLogin = async ({params,dispatch}) => {
-  console.log('2345234234params',params);
+const handleLogin = async ({params,dispatch,ownProps}) => {
   
   try {
     await loginTask(params,dispatch);
+    console.log('2345234234ownProps',ownProps);
+    ownProps.navigation.navigate('App');
   }catch(error){
 
   }
@@ -14,17 +15,15 @@ const handleLogin = async ({params,dispatch}) => {
 
 
 const mapStateToProps = (state,ownProps) => {
-  console.log('342afsdfasdf',ownProps);
-  const { navigation } = ownProps
-
+  navigation = ownProps.navigation
   return {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch,ownProps) => {
 
   return {
-    handleLogin: (params) => handleLogin({params,dispatch})
+    handleLogin: (params) => handleLogin({params,dispatch,ownProps})
   }
 };
 

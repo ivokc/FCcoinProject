@@ -3,8 +3,7 @@ import { AsyncStorage } from "react-native"
 const StoreUtility = {
 
   storeData(key,value) {
-    let type = Just.type(value);
-    AsyncStorage.setItem(key, value).then(()=> {
+    return AsyncStorage.setItem(key, JSON.stringify(value)).then(()=> {
       return Promise.resolve('storeData----success');
     },(error) => {
       console.log('storeData----error',error);
@@ -12,9 +11,9 @@ const StoreUtility = {
     });
   },
   retrieveData(key){
-    AsyncStorage.getItem(key).then((response)=> {
+    return AsyncStorage.getItem(key).then((response)=> {
       console.log('retrieveData----response',response);
-      return Promise.resolve(response);
+      return Promise.resolve(JSON.parse(response));
     },(error) => {
       console.log('retrieveData----error',error);
       return Promise.reject(error);

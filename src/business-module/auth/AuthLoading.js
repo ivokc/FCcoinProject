@@ -12,7 +12,7 @@ export default class AuthLoading extends React.Component {
     const userInfo = await Just.retrieveData('userInfo');
     // This will switch to the App screen or Auth screen and this loading
     // screen will be unmounted and thrown away.
-    console.log('userInfo------',userInfo)
+    console.log('AuthLoading=======',userInfo)
     dispatch(loginAction(userInfo));
     this.props.navigation.navigate(userInfo ? 'App' : 'Auth');
   };
