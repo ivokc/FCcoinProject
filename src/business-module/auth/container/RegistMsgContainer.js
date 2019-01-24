@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import RegistView from '../view/RegistView';
+import RegistMsgView from '../view/RegistMsgView';
 // import {loginTask} from '../vendor/Task';
 
 const handleRegist = async ({params,dispatch}) => {
@@ -22,4 +22,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(RegistView);
+export default connect(mapStateToProps,mapDispatchToProps)(RegistMsgView);

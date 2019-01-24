@@ -10,3 +10,4 @@
 
 export { default as UIIconInput } from './formItem/UIIconInput';
 export { default as UIButton} from './formItem/UIButton';
+export { default as UIRow} from './formItem/UIRow';

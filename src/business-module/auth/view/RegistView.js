@@ -20,11 +20,10 @@ export default class RegistView extends React.Component {
             <UIIconInput style={styles.input} icon='contacts' placeholder='请输入昵称'/>
           </View>
 
-          <UIButton style={styles.button} text='登录' onPress={()=>{}} />
+          <UIButton style={styles.button} text='下一步' onPress={()=>{}} />
 
           <View style={styles.row} >
-            <Text style={styles.clickText}>注册账号</Text>
-            <Text style={styles.clickText}>忘记秘密</Text>
+            <Text style={styles.plainText}>注册FPAY钱包表示同意FPAY<Text style={styles.clickText}>《服务协议》</Text></Text>
           </View>
         </View>
       
@@ -42,10 +41,7 @@ const styles = StyleSheet.create({
     color:'rgba(0,0,0,1)'
   },
   row:{
-    margin:13,
-    flex:1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    marginTop:10,
   },
   underline: {
     width:30,
@@ -54,14 +50,19 @@ const styles = StyleSheet.create({
     marginTop:10
   },
   inputBox:{
-    marginTop:80
+    marginTop:60
   },
   button:{
-    marginTop:45
+    marginTop:35
+  },
+  plainText:{
+    color:'rgba(187,187,187,1)',
+    fontSize:15,
+    fontFamily:'PingFangSC-Regular',
   },
   clickText:{
     color:'rgba(114,109,254,1)',
-    fontSize:18,
+    fontSize:15,
     fontFamily:'PingFangSC-Regular',
   }
 });

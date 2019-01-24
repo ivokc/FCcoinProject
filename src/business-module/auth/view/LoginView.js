@@ -5,7 +5,20 @@ import {UIIconInput,UIButton} from '../../../main/component/UIComponents'
 
 @AutoHideKeyboard
 export default class LoginView extends React.Component {
+  
+  state = {
+    username:'',
+    password:''
+  }
+
+  handleLogin = () => {
+    let {username,password} = this.state;
+    
+    this.props.handleLogin({username,password});
+  }
   render() {
+    console.log('this.propsasfddf',this.props);
+    
     return (
         <View style={styles.container}>
           <Text style={styles.title}>
@@ -13,24 +26,27 @@ export default class LoginView extends React.Component {
           </Text>
           <View style={styles.underline} />
           <View style={styles.inputBox} >
-            <UIIconInput style={styles.input} icon='mobile1' placeholder='请输入邮箱或手机号'/>
-            <UIIconInput style={styles.input} icon='lock' placeholder='请输入登录密码'/>
+            <UIIconInput  icon='mobile1' placeholder='请输入邮箱或手机号' 
+            onChangeText={(text) => this.setState({username:text})}/>
+            <UIIconInput message icon='lock' placeholder='请输入登录密码' 
+            onChangeText={(text) => this.setState({password:text})}/>
           </View>
 
-          <UIButton style={styles.button} text='登录' onPress={()=>{}} />
+          <UIButton style={styles.button} text='登录' onPress={this.handleLogin} />
 
           <View style={styles.row} >
-            <Text style={styles.clickText}>注册账号</Text>
+            <Text style={styles.clickText} onPress={() => this.props.navigation.navigate('Regist')}>注册账号</Text>
             <Text style={styles.clickText}>忘记秘密</Text>
           </View>
         </View>
+
       
     );
   }
 }
 const styles = StyleSheet.create({
   container: {
-    padding:30
+    padding:30,
   },
   title: {
     fontSize:25,
@@ -39,10 +55,10 @@ const styles = StyleSheet.create({
     color:'rgba(0,0,0,1)'
   },
   row:{
-    margin:13,
-    flex:1,
+    margin:10,
     flexDirection: 'row',
     justifyContent: 'space-between',
+
   },
   underline: {
     width:30,
@@ -51,10 +67,10 @@ const styles = StyleSheet.create({
     marginTop:10
   },
   inputBox:{
-    marginTop:80
+    marginTop:60,
   },
   button:{
-    marginTop:45
+    marginTop:35
   },
   clickText:{
     color:'rgba(114,109,254,1)',

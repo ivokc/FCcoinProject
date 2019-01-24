@@ -1,7 +1,7 @@
 import React from "react";
 import { View,StyleSheet,Image,ImageBackground,Text,TouchableOpacity} from "react-native";
-import {UIRow} from "../../../main/component/UIComponents"
-export default class HomeView extends React.Component {
+
+export default class RechargeDetView extends React.Component {
 
 
 
@@ -32,37 +32,36 @@ export default class HomeView extends React.Component {
         </ImageBackground>
         <ImageBackground style={styles.menu} source={Img.MenuBg}>
           <TouchableOpacity style={styles.menuItem} onPress={this.onMenuItemPress}>
-            <Image style={styles.menuItemPic} source={Img.FCRecharge} />
+            <Image
+              style={styles.menuItemPic}
+              source={Img.FCRecharge}
+            />
             <Text style={styles.menuItemTxt}>FC充值</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.menuItem} onPress={this.onMenuItemPress}>
-            <Image style={styles.menuItemPic} source={Img.Scan} />
+            <Image
+              style={styles.menuItemPic}
+              source={Img.Scan}
+            />
             <Text style={styles.menuItemTxt}>扫一扫</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.menuItem} onPress={this.onMenuItemPress}>
-            <Image style={styles.menuItemPic} source={Img.RechargeDet}/>
+            <Image
+              style={styles.menuItemPic}
+              source={Img.RechargeDet}
+            />
             <Text style={styles.menuItemTxt}>充值明细</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.menuItem} onPress={this.onMenuItemPress}>
-            <Image style={styles.menuItemPic} source={Img.OrderDet}/>
+            <Image
+              style={styles.menuItemPic}
+              source={Img.OrderDet}
+            />
             <Text style={styles.menuItemTxt}>订单明细</Text>
           </TouchableOpacity>
         </ImageBackground>
 
-        <View style={styles.content}>
-          <UIRow style={{marginTop:20}}>
-            <Image style={styles.contentPic} source={Img.PayAccount} />
-            <Text style={styles.contentTxt}>我的银行卡</Text>
-          </UIRow>
-          <UIRow style={styles.contentRow}>
-            <Image style={styles.contentPic} source={Img.Lock} />
-            <Text style={styles.contentTxt}>修改登录密码</Text>
-          </UIRow>
-          <UIRow style={{marginTop:20}}>
-            <Image style={styles.contentPic} source={Img.Quit} />
-            <Text style={styles.contentTxt}>退出登录</Text>
-          </UIRow>
-        </View>
+        <View style={styles.content} />
       </View>
       
     );
@@ -119,21 +118,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems:'center',
     justifyContent:'space-evenly',
-    resizeMode:'contain'
   },
   content:{
     flex:3,
     backgroundColor: 'rgba(245,245,245,1)'
   },
   menuItem:{
-    marginTop:10,
-    width:80,
-    height:65,
+    width:70,
+    height:70,
     alignItems:'center',
   },
   menuItemPic:{
-    width:30,
-    height:30,
+    width:40,
+    height:35,
     resizeMode:'contain'
   },
   menuItemTxt:{
@@ -143,21 +140,7 @@ const styles = StyleSheet.create({
     fontWeight:'400',
     color:'rgba(51,51,51,1)',
     lineHeight:37
-  },
-  contentPic:{
-    width:25,
-    height:25,
-    resizeMode:'contain',
-    margin:20
-  },
-  contentTxt:{
-    fontSize:16,
-    fontFamily:'PingFangSC-Regular',
-    fontWeight:'400',
-    color:'rgba(51,51,51,1)',
-    lineHeight:42
-  },
-  
+  }
 
 
 });

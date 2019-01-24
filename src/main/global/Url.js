@@ -1,5 +1,5 @@
 global.Url = {
-  login: '/login',
- 
+  login: '/js/a/login',
   
+  changePWD:'/js/a/api/changePWD'
 }

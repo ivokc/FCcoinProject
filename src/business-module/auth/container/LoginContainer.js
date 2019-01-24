@@ -3,11 +3,23 @@ import LoginView from '../view/LoginView';
 import {loginTask} from '../vendor/Task';
 
 const handleLogin = async ({params,dispatch}) => {
+  console.log('2345234234params',params);
+  
   try {
     await loginTask(params,dispatch);
-  }catch(error){}
+  }catch(error){
+
+  }
 }
 
+
+const mapStateToProps = (state,ownProps) => {
+  console.log('342afsdfasdf',ownProps);
+  const { navigation } = ownProps
+
+  return {
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
 
@@ -16,4 +28,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-export default connect(null,mapDispatchToProps)(LoginView);
+export default connect(mapStateToProps,mapDispatchToProps)(LoginView);
