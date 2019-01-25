@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import RechargeDetView from '../view/UserDetView';
+import UserView from '../view/UserView';
 
 
 
@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-export default connect(null,mapDispatchToProps)(RechargeDetView);
+export default connect(null,mapDispatchToProps)(UserView);

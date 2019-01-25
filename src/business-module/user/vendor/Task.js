@@ -1,34 +1,25 @@
-import {loginIntf} from './Intf';
-import {loginAction} from '../../dataflow/Action';
+import {changePWDIntf} from './Intf';
 
-async function loginTask(params,dispatch) {
-  try {
-    let userInfo = await loginIntf(params);
-    dispatch(loginAction({
-      ...params,
-      ...userInfo
-    }));
+async function changePWDTask(params) {
+  try{
+    let password = Just.encode(params.password,Constant.encryptKey);
+    let newpassword = Just.encode(params.newpassword,Constant.encryptKey);
+  
+    let result = await changePWDIntf({...params,password,newpassword});
+    console.log('changePWDTask',result);
+    if(result.result === 'false'){
+      
+    }
+  }catch(error){
+    console.log('changePWDTaskError',error);
+    return Promise.reject(error);
+  }
+  
 
-  }catch(error){}
   
 }
 
-// async function menuTask(dispatch){
-//   try{
-//     let response = await menuInterface();
-//     dispatch(getMenuAction(response))
-//   }catch(error){}
-// }
-
-// async function dictTask(dispatch) {
-//   try {
-//     let dicts = await dictInterface();
-//     dispatch(getDictAction(dicts));
-
-//   }catch(error){}
-// }
-
 
 export {
-  loginTask,
+  changePWDTask,
 };

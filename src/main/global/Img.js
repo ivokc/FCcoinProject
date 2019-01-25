@@ -10,4 +10,25 @@ global.Img = {
   PayAccount:require('../../img/PayAccount.png'),
   Lock:require('../../img/Lock.png'),
   Quit:require('../../img/Quit.png'),
+
+  HomeActive:require('../../img/Home-active.png'),
+  HomeInactive:require('../../img/Home-inactive.png'),
+  RechargeActive:require('../../img/Recharge-active.png'),
+  RechargeInactive:require('../../img/Recharge-inactive.png'),
+  UserActive:require('../../img/User-active.png'),
+  UserInactive:require('../../img/User-inactive.png'),
+
+
+  CheckBoxCheckedImage:require('../../img/CheckBoxCheckedImage.png'),
+  CheckBoxUnCheckedImage:require('../../img/CheckBoxUnCheckedImage.png'),
+
+  Splash:require('../../img/Splash.png'),
+  Avator:require('../../img/Avator.png'),
+
+
+  ArrowBack:require('../../img/ArrowBack.png'),
+  Arrow:require('../../img/Arrow.png'),
+  PaySuccess:require('../../img/PaySuccess.png'),
+  PayFalse:require('../../img/PayFalse.png'),
+
 }

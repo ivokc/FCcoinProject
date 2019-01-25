@@ -8,7 +8,7 @@ export default class UIButton extends React.Component {
       <TouchableHighlight style={[styles.container,this.props.style,
         this.props.disabled ? {backgroundColor:'rgba(204,204,204,1)'} : {backgroundColor:'rgba(114,109,254,1)'}]} 
         disabled={this.props.disabled || false}
-        underlayColor="white"
+        underlayColor="rgba(104,104,104,1)"
         onPress={this.props.onPress}>
         <Text style={styles.text}> {this.props.text} </Text>
       </TouchableHighlight>

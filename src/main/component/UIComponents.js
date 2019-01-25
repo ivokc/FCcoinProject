@@ -10,4 +10,6 @@
 
 export { default as UIIconInput } from './formItem/UIIconInput';
 export { default as UIButton} from './formItem/UIButton';
+export { default as UICheckBox} from './formItem/UICheckBox';
 export { default as UIRow} from './formItem/UIRow';
+export { default as UITextInput} from './formItem/UITextInput';

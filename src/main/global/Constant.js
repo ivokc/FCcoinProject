@@ -7,4 +7,7 @@ global.Constant = {
   encryptKey:'fpay,fp,com',
   deviceWidth:Dimensions.get('window').width,
   deviceHeight:Dimensions.get('window').height,
+
+  showLoading:false,//加载框可见
+
 }

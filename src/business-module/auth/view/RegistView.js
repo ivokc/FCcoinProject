@@ -1,8 +1,8 @@
 import React from "react";
 import { View,StyleSheet,Text} from "react-native";
-import {UIIconInput,UIButton} from '../../../main/component/UIComponents'
+import {UIIconInput,UIButton,UICheckBox} from '../../../main/component/UIComponents'
 
-
+@CommonHead('')
 @AutoHideKeyboard
 export default class RegistView extends React.Component {
   render() {
@@ -23,6 +23,11 @@ export default class RegistView extends React.Component {
           <UIButton style={styles.button} text='下一步' onPress={()=>{}} />
 
           <View style={styles.row} >
+            <UICheckBox
+              label={this.props.label}
+              onChange={this.props.checkBoxOnChange}
+              checked={this.props.checked}
+              checkboxStyle={{height:20,width:20}}/>
             <Text style={styles.plainText}>注册FPAY钱包表示同意FPAY<Text style={styles.clickText}>《服务协议》</Text></Text>
           </View>
         </View>
@@ -42,6 +47,7 @@ const styles = StyleSheet.create({
   },
   row:{
     marginTop:10,
+    flexDirection:'row'
   },
   underline: {
     width:30,
@@ -56,6 +62,7 @@ const styles = StyleSheet.create({
     marginTop:35
   },
   plainText:{
+    marginLeft:10,
     color:'rgba(187,187,187,1)',
     fontSize:15,
     fontFamily:'PingFangSC-Regular',

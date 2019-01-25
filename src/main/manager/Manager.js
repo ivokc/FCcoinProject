@@ -1,19 +1,21 @@
 import NetworkUtility from '../utility/NetworkUtility';
-import MessageUtility from '../utility/MessageUtility';
+import DialogUtility from '../utility/DialogUtility';
 import DataUtility from '../utility/DataUtility';
 import StoreUtility from '../utility/StoreUtility';
 import DesUtility from '../utility/DesUtility';
+import NativeUtility from '../utility/NativeUtility';
 
 //functional
 export const FunctionalManager = {
   ...NetworkUtility,
   ...DataUtility,
   ...StoreUtility,
-  ...DesUtility
+  ...DesUtility,
+  ...NativeUtility
 };
 
 
 //ui
 export const UIManager = {
-  ...MessageUtility
+  ...DialogUtility
 };

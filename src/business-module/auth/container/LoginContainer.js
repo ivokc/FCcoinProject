@@ -6,16 +6,15 @@ const handleLogin = async ({params,dispatch,ownProps}) => {
   
   try {
     await loginTask(params,dispatch);
-    console.log('2345234234ownProps',ownProps);
     ownProps.navigation.navigate('App');
   }catch(error){
-
+    console.log('handleLoginfffff',error);
+    
   }
 }
 
 
 const mapStateToProps = (state,ownProps) => {
-  navigation = ownProps.navigation
   return {
   };
 };

@@ -1,15 +1,14 @@
 import React from "react";
 import { View,StyleSheet,Image,ImageBackground,Text,TouchableOpacity} from "react-native";
 import {UIRow} from "../../../main/component/UIComponents"
+
+
+
+
+@AutoHideKeyboard
 export default class HomeView extends React.Component {
 
-
-
-
-
-  onMenuItemPress = () => {
-
-  }
+  
   render() {
     console.log('1234124124',Img.FCRecharge);
     
@@ -31,19 +30,19 @@ export default class HomeView extends React.Component {
           </View>
         </ImageBackground>
         <ImageBackground style={styles.menu} source={Img.MenuBg}>
-          <TouchableOpacity style={styles.menuItem} onPress={this.onMenuItemPress}>
+          <TouchableOpacity style={styles.menuItem} onPress={() => {this.props.navigation.navigate('OrderList')}}>
             <Image style={styles.menuItemPic} source={Img.FCRecharge} />
             <Text style={styles.menuItemTxt}>FC充值</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem} onPress={this.onMenuItemPress}>
+          <TouchableOpacity style={styles.menuItem} onPress={() => {this.props.navigation.navigate('OrderList')}}>
             <Image style={styles.menuItemPic} source={Img.Scan} />
             <Text style={styles.menuItemTxt}>扫一扫</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem} onPress={this.onMenuItemPress}>
+          <TouchableOpacity style={styles.menuItem} onPress={()=>{this.props.navigation.navigate('PayList')}}>
             <Image style={styles.menuItemPic} source={Img.RechargeDet}/>
             <Text style={styles.menuItemTxt}>充值明细</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem} onPress={this.onMenuItemPress}>
+          <TouchableOpacity style={styles.menuItem} onPress={() => {this.props.navigation.navigate('OrderList')}}>
             <Image style={styles.menuItemPic} source={Img.OrderDet}/>
             <Text style={styles.menuItemTxt}>订单明细</Text>
           </TouchableOpacity>
@@ -54,7 +53,7 @@ export default class HomeView extends React.Component {
             <Image style={styles.contentPic} source={Img.PayAccount} />
             <Text style={styles.contentTxt}>我的银行卡</Text>
           </UIRow>
-          <UIRow style={styles.contentRow}>
+          <UIRow style={styles.contentRow} onPress={()=>{this.props.navigation.navigate('UserChangePwd')}}>
             <Image style={styles.contentPic} source={Img.Lock} />
             <Text style={styles.contentTxt}>修改登录密码</Text>
           </UIRow>
@@ -121,10 +120,7 @@ const styles = StyleSheet.create({
     justifyContent:'space-evenly',
     resizeMode:'contain'
   },
-  content:{
-    flex:3,
-    backgroundColor: 'rgba(245,245,245,1)'
-  },
+ 
   menuItem:{
     marginTop:10,
     width:80,
@@ -143,6 +139,10 @@ const styles = StyleSheet.create({
     fontWeight:'400',
     color:'rgba(51,51,51,1)',
     lineHeight:37
+  },
+  content:{
+    flex:3,
+    backgroundColor: 'rgba(245,245,245,1)'
   },
   contentPic:{
     width:25,

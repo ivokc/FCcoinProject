@@ -5,7 +5,6 @@ import {UIIconInput,UIButton} from '../../../main/component/UIComponents'
 
 @AutoHideKeyboard
 export default class LoginView extends React.Component {
-  
   state = {
     username:'',
     password:''
@@ -20,6 +19,7 @@ export default class LoginView extends React.Component {
     
     return (
         <View style={styles.container}>
+        
           <Text style={styles.title}>
             登录
           </Text>
@@ -27,7 +27,7 @@ export default class LoginView extends React.Component {
           <View style={styles.inputBox} >
             <UIIconInput  icon='mobile1' placeholder='请输入邮箱或手机号' 
             onChangeText={(text) => this.setState({username:text})}/>
-            <UIIconInput message icon='lock' placeholder='请输入登录密码' 
+            <UIIconInput icon='lock' placeholder='请输入登录密码' 
             onChangeText={(text) => this.setState({password:text})}/>
           </View>
 

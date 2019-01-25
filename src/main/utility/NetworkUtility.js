@@ -16,7 +16,7 @@ const NetworkUtility = {
       method: "GET",
     }).then((response)=> {
       let bodyText = JSON.parse(response._bodyText)
-      if (response.status === 200 && bodyText.result === 'true') {
+      if (response.status === 200) {
         // console.log('getRequest----response._bodyText',bodyText);
         return Promise.resolve(bodyText);
       }else {
