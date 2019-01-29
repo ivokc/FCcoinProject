@@ -29,7 +29,7 @@ const defaultState = {
     userName:'test001',
     password:'123456',
 };
-@CommonHead('充值明细')
+@CommonHead('充值明细',true)
 class PayListContainer extends PureComponent {
 
     constructor(props) {
@@ -53,11 +53,13 @@ class PayListContainer extends PureComponent {
 
        getRechargeOrderTask(this.props.sessionId).then((response) =>{
 
-           console.log('~~~~~~~getRechargeOrderTask~~~~~~~',response.list.length)
+           console.log('~~~~~~~getRechargeOrderTask~~~~~~~',response.list[0])
 
            let tempBTDatas=[]
            let BTData={}
            if(response.list.length>0){
+                Constant.qqNum = response.list[0].payeeFpUser.qq
+
              for(var i = 0; i < response.list.length; i++){
 
                let statusShow=''
@@ -147,7 +149,7 @@ PayListContainer.defaultProps = defaultProps;
 function mapStateToProps(state) {
     // console.log('111',loginReducer);
     return {
-      sessionId:state.userReducer.sessionid
+      sessionId:state.userReducer ?state.userReducer.sessionid : 1
 
     };
 }

@@ -8,7 +8,7 @@ async function changePWDTask(params) {
     let result = await changePWDIntf({...params,password,newpassword});
     console.log('changePWDTask',result);
     if(result.result === 'false'){
-      
+      throw new Error(result)
     }
   }catch(error){
     console.log('changePWDTaskError',error);

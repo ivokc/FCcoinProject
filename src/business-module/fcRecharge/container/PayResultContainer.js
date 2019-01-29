@@ -17,10 +17,12 @@ const defaultProps = {
 
 const defaultState = {
 
-    result:false,
+    result:true,
 
 };
 
+@CommonHead('',true)
+@AutoHideKeyboard
 class PayResultContainer extends PureComponent {
 
     constructor(props) {
@@ -32,7 +34,7 @@ class PayResultContainer extends PureComponent {
     }
     componentWillMount(){
       // this.handleReadyPress()
-         console.log('~~~~~~~pullLoad~~~~~~~')
+         // console.log('~~~~~~~pullLoad~~~~~~~')
     }
 
     componentDidMount() {
@@ -40,7 +42,20 @@ class PayResultContainer extends PureComponent {
      }
 
 
+     handleAgreePress=()=>{
+        // console.log('~~~~~~~44444444444444~~~~~~~')
 
+
+             this.props.navigation.navigate('Home');
+
+     }
+
+    handlePress=()=>{
+       // console.log('~~~~~~~44444444444444~~~~~~~')
+
+            this.props.navigation.navigate('PayWay');
+
+    }
 
     render() {
       // console.log('33333333333',this.state.BTDatas)
@@ -49,6 +64,8 @@ class PayResultContainer extends PureComponent {
             <PayResultView
               navigation={this.props.navigation}
               result={this.state.result}
+              handleAgreePress={this.handleAgreePress}
+              handlePress={this.handlePress}
               />
         );
     }

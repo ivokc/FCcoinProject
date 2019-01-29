@@ -22,7 +22,7 @@ const defaultProps = {
 const defaultState = {
 
 };
-@CommonHead('付款页面')
+
 export default class PayResultView extends PureComponent {
 
     constructor(props) {
@@ -39,7 +39,7 @@ export default class PayResultView extends PureComponent {
            <View style={styles.container}>
 
               {
-                this.props.result==true?
+                this.props.navigation.state.params.result==true?
                 <View style={styles.body}>
                 <View style={styles.imgView}>
                   <Image  source={Img.PaySuccess} style={styles.img}/>
@@ -53,7 +53,7 @@ export default class PayResultView extends PureComponent {
 
                 <View style={styles.buttonLayoutStyle}>
                           <UIButton text='确认' style={styles.button}
-                          handlePress={this.props.handleAgreePress}/>
+                          onPress={this.props.handleAgreePress}/>
                 </View>
 
                 </View>:
@@ -64,13 +64,17 @@ export default class PayResultView extends PureComponent {
 
                 <View style={styles.textView}>
                     <Text style={styles.bodyText}>支付失败，余额不够，请  </Text>
+                    <TouchableOpacity activeOpacity={0.8} onPress={() => {
+                        this.props.handlePress();
+                    }}>
                     <Text style={styles.bodyText2}>立即充值</Text>
+                    </TouchableOpacity>
                 </View>
 
 
                 <View style={styles.buttonLayoutStyle}>
                           <UIButton text='确认' style={styles.button}
-                          handlePress={this.props.handleAgreePress}/>
+                          onPress={this.props.handleAgreePress}/>
                 </View>
 
                 </View>

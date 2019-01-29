@@ -9,7 +9,6 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import OrderListView from '../view/OrderListView';
 import {getPaymentOrdersTask} from '../vendor/Task';
-import {userReducer} from '../../auth/vendor/dataflow/Reducer';
 // import {queryRunzoneForAPP,queryRunZoneDetail} from '../vendor/Task';
 
 const defaultProps = {
@@ -124,7 +123,7 @@ OrderListContainer.defaultProps = defaultProps;
 
 function mapStateToProps(state) {
     return {
-      sessionId:state.userReducer.sessionid
+      sessionId:state.userReducer ? state.userReducer.sessionid : 1
     };
 }
 

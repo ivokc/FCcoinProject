@@ -32,7 +32,23 @@ export default class PayOrderDetailView extends PureComponent {
 
 
     render() {
-      // console.log('2222222222222222',this.props)
+      console.log('2222222222222222',this.props.navigation.state.params)
+
+
+      // <View style={styles.bottomView}>
+      //   <View style={styles.bottomLeftView}>
+      //     <Text style={styles.bodyText}>资金密码</Text>
+      //   </View>
+      //   <View style={styles.bottomRightView}>
+      //     <UITextInput  placeholder='请输入6位资金密码'
+      //       textInputstyles={styles.textInputStyle}
+      //     onChangeText={(text) => this.setState({password:text})}/>
+      //   </View>
+      //
+      // </View>
+      // <View style={styles.bottomView2}>
+      //     <Text style={styles.bottomText}>忘记密码</Text>
+      // </View>
 
         return (
 
@@ -47,7 +63,7 @@ export default class PayOrderDetailView extends PureComponent {
                         <Text style={styles.bodyText}>单号:</Text>
                       </View>
                       <View style={styles.listRightView}>
-                        <Text style={styles.bodyText2}>00000000001</Text>
+                        <Text style={styles.bodyText2}>{this.props.navigation.state.params.orderCode}</Text>
                       </View>
                     </View>
 
@@ -56,7 +72,7 @@ export default class PayOrderDetailView extends PureComponent {
                         <Text style={styles.bodyText}>支付额度:</Text>
                       </View>
                       <View style={styles.listRightView}>
-                        <Text style={styles.bodyText2}>209.00元=209 FC</Text>
+                        <Text style={styles.bodyText2}>{this.props.navigation.state.params.orderNum}元={this.props.navigation.state.params.orderNum} FC</Text>
                       </View>
                     </View>
 
@@ -66,7 +82,7 @@ export default class PayOrderDetailView extends PureComponent {
                         <Text style={styles.bodyText}>商家：</Text>
                       </View>
                       <View style={styles.listRightView}>
-                        <Text style={styles.bodyText2}>香港九龙国际玩家</Text>
+                        <Text style={styles.bodyText2}>{this.props.navigation.state.params.merchant}</Text>
                       </View>
                     </View>
 
@@ -76,30 +92,18 @@ export default class PayOrderDetailView extends PureComponent {
                         <Text style={styles.bodyText}>商家订单号：</Text>
                       </View>
                       <View style={styles.listRightView}>
-                        <Text style={styles.bodyText2}>010101010101010</Text>
+                        <Text style={styles.bodyText2}>{this.props.navigation.state.params.merchantOrderCode}</Text>
                       </View>
                     </View>
 
                     </View>
-                    <View style={styles.bottomView}>
-                      <View style={styles.bottomLeftView}>
-                        <Text style={styles.bodyText}>资金密码</Text>
-                      </View>
-                      <View style={styles.bottomRightView}>
-                        <UITextInput  placeholder='请输入6位资金密码'
-                          textInputstyles={styles.textInputStyle}
-                        onChangeText={(text) => this.setState({password:text})}/>
-                      </View>
 
-                    </View>
-                    <View style={styles.bottomView2}>
-                        <Text style={styles.bottomText}>忘记密码</Text>
-                    </View>
                       <View style={styles.bottomView3}>
                                           <View style={styles.buttonLayoutStyle}>
                                                     <UIButton text='确认支付' style={styles.button}
-                                                    handlePress={this.props.handleAgreePress}/>
+                                                    onPress={this.props.handleAgreePress}/>
                                           </View>
+
 
                     </View>
                 </View>
@@ -159,7 +163,7 @@ const styles = StyleSheet.create({
   },
   bottomView3:{
 
-    backgroundColor: '#F8F8F8'
+    backgroundColor: '#FFFFFF'
   },
   body:{
     flex:1,

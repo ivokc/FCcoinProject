@@ -2,7 +2,7 @@ import React from "react";
 import { View,StyleSheet,Text} from "react-native";
 import {UIIconInput,UIButton,UICheckBox} from '../../../main/component/UIComponents'
 
-@CommonHead('修改登录密码')
+@CommonHead('修改登录密码',true)
 @AutoHideKeyboard
 export default class UserChangePwdView extends React.Component {
 
@@ -26,14 +26,12 @@ export default class UserChangePwdView extends React.Component {
   }
 
   handleChangePWD = () => {
-    let {sessionId} = this.props;
-    this.props.handleChangePWD({...this.state,sessionId});
+    this.props.handleChangePWD({...this.state});
   }
 
 
   render() {
     let validateOk = this.validateForm();
-    console.log('123541241|sessionId',this.props.sessionId);
     return (
         <View style={styles.container}>
           <View style={styles.inputBox} >

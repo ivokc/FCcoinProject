@@ -12,19 +12,29 @@ const NetworkUtility = {
       }  
     }  
     console.log('getRequest----url',url);
-    return fetch(Constant.baseURL + url,{
-      method: "GET",
-    }).then((response)=> {
+    return Promise.race([
+      fetch(Constant.baseURL + url),
+      new Promise(function (resolve, reject) {
+          setTimeout(() => reject(new Error('request timeout')), Constant.timeout);
+      })
+    ]).then((response)=> {
       let bodyText = JSON.parse(response._bodyText)
       if (response.status === 200) {
-        // console.log('getRequest----response._bodyText',bodyText);
+        console.log('getRequest----response',response);
+        if (bodyText.isValidCodeLogin === false) {
+          //session超时
+          Just.clearAuthData();
+          return Promise.reject('session超时');
+        }
+        
         return Promise.resolve(bodyText);
       }else {
         console.log('getRequest----error',bodyText.message);
         return Promise.reject(response._bodyText.message);
       }
     },(error) => {
-      console.log('getRequest----error',error);
+      
+      console.log('getRequest111----error',error.message);
       return Promise.reject(error);
     });
   },

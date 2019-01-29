@@ -3,10 +3,10 @@ import UserChangePwdView from '../view/UserChangePwdView';
 import {changePWDTask} from '../vendor/Task';
 
 
-
+let sessionId;
 const handleChangePWD = async ({params,dispatch,ownProps}) => {
   try {
-    await changePWDTask(params);
+    await changePWDTask({...params,sessionId});
     ownProps.navigation.navigate('Home');
   }catch(error){
     console.log('handleLoginfffff',error);
@@ -14,9 +14,9 @@ const handleChangePWD = async ({params,dispatch,ownProps}) => {
   }
 }
 const mapStateToProps = (state,ownProps) => {
+  sessionId = state.userReducer ? state.userReducer.sessionid : 1;
 
   return {
-    sessionId:state.userReducer.sessionid
   };
 };
 

@@ -15,6 +15,7 @@ import './src/main/global/Constant';
 import './src/main/global/Url';
 import './src/main/global/Img';
 import RootRouter from './src/router/RootRouter';
+import {UILoading,UIMessage} from './src/main/component/UIComponents'
 import store from './src/dataflow/Store';
 
 export default class App extends Component {
@@ -24,19 +25,9 @@ export default class App extends Component {
     
     return (
       <Provider store={store}>
-          {/* <Modal
-              refs={(ref) => global.showLoading = ref}
-              animationType="slide"
-              transparent={true}
-              visible={Constant.showLoading}
-              onRequestClose={() => {
-                alert("Modal has been closed.");
-              }}
-            >
-              <ActivityIndicator style={{ marginTop: 220,width:50,height:50,backgroundColor:'#000000',opacity:0.5 }} size="large" color="#0000ff" />
-          </Modal> */}
+          <UILoading ref={(ref) => {global.Myloading = ref}}/>
+          <UIMessage ref={(ref) => {global.Mymessage = ref}}/>
           <RootRouter/>
-
       </Provider>
     );
   }

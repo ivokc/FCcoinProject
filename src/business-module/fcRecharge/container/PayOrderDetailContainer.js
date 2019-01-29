@@ -8,7 +8,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PayOrderDetailView from '../view/PayOrderDetailView';
-
+import {paymentTask} from '../vendor/Task';
 // import {queryRunzoneForAPP,queryRunZoneDetail} from '../vendor/Task';
 
 const defaultProps = {
@@ -17,11 +17,9 @@ const defaultProps = {
 
 const defaultState = {
 
-    secretKey:'fpay,fp,com',
-    userName:'test001',
-    password:'123456',
 };
-
+@CommonHead('订单支付详情')
+@AutoHideKeyboard
 class PayOrderDetailContainer extends PureComponent {
 
     constructor(props) {
@@ -33,14 +31,32 @@ class PayOrderDetailContainer extends PureComponent {
     }
     componentWillMount(){
       // this.handleReadyPress()
-         console.log('~~~~~~~pullLoad~~~~~~~')
+         // console.log('~~~~~~~pullLoad~~~~~~~')
     }
 
     componentDidMount() {
 
      }
 
+     handleAgreePress=()=>{
+        console.log('~~~~~~~44444444444444~~~~~~~')
+       paymentTask(this.props.sessionId,this.props.navigation.state.params.orderCode).then((response) =>{
 
+           console.log('~~~~~~~paymentTask~~~~~~~',response)
+
+           if(response.result=='true'){
+
+                this.props.navigation.navigate('PayResult',{result:true});
+           }else {
+                this.props.navigation.navigate('PayResult',{result:false});
+           }
+
+       }).catch((error) => {
+         // Just.dismissLoading();
+         // Just.ErrorHandler(error,() => { this.handleLogin() });/
+         console.log('~~~~~~~error~~~~~~~',error)
+      });
+     }
 
 
     render() {
@@ -49,7 +65,7 @@ class PayOrderDetailContainer extends PureComponent {
         return (
             <PayOrderDetailView
               navigation={this.props.navigation}
-              BTDatas={this.state.BTDatas}
+            handleAgreePress={this.handleAgreePress}
               />
         );
     }
@@ -58,11 +74,10 @@ class PayOrderDetailContainer extends PureComponent {
 PayOrderDetailContainer.defaultProps = defaultProps;
 
 function mapStateToProps(state) {
-    const { loginReducer} = state;
     // console.log('111',loginReducer);
     return {
-      loginReducer:loginReducer,
+      sessionId:state.userReducer.sessionid
+
     };
 }
-
 export default connect(mapStateToProps)(PayOrderDetailContainer);

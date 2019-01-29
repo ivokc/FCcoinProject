@@ -1,36 +1,76 @@
 import React from "react";
-import { View,StyleSheet,TextInput,Text} from "react-native";
+import { View,StyleSheet,TextInput,Text,TouchableWithoutFeedback} from "react-native";
 import Icon from 'react-native-vector-icons/AntDesign';
 
+
+
 export default class UIIconInput extends React.Component {
-  
-  renderMessage = () => {
-    if (this.props.message) {
-      return (
-        <View style={styles.message}>
-          <Text style={styles.clickable}>重新发送</Text>
-        </View>
-      );
-    } else {
+
+  state = {
+    second:60
+  }
+  componentWillMount() {
+    if(this.props.action === 'sms') {
+      this.startTimer()
+    }
+    
+  }
+  componentWillUnmount() {
+    this.timer && clearInterval(this.timer);
+  }
+
+  startTimer = () => {
+    this.setState({second:60})
+    this.timer = setInterval(() => {
+      this.setState((state) => {
+        if(state.second == 0){
+          this.timer && clearInterval(this.timer);
+          return {
+            second:0
+          }
+        }else{
+          return {
+            second:state.second - 1
+          }
+        }
+      });
+    }, 1000); 
+  }
+
+  renderAction = () => {
+    if (this.props.action === 'sms') {
+      if(this.state.second != 0) {
+        return (
+          <View style={styles.sms}>
+            <Text style={[styles.text,{color:'#BABABA'}]}>{this.state.second}s后重试</Text>
+          </View>
+        );
+      }else{
+        return (
+          <TouchableWithoutFeedback onPress={this.startTimer} style={styles.sms}>
+            <Text style={styles.text}>重新发送</Text>
+          </TouchableWithoutFeedback>
+        );
+      }
+      
+    }else {
       return null;
     }
   }
   
   render() {
-    console.log('23423423423',Constant.deviceWidth);
-    
     return (
       
       <View style={[styles.container,this.props.style]}>
         <Icon style={styles.icon} name={this.props.icon} size={30} color="#CCCCCC" />
         <TextInput 
           {...this.props}
-          style={[styles.textInput,this.props.message ? {flex:6}: {flex:9}]}
+          style={[styles.textInput,this.props.action ? {flex:6}: {flex:9}]}
           placeholderTextColor='rgba(204,204,204,1)'
           onChangeText={this.props.onChangeText}
         />
           {
-            this.renderMessage()
+            this.renderAction()
           }
           
       </View>
@@ -39,6 +79,9 @@ export default class UIIconInput extends React.Component {
     );
   }
 }
+UIIconInput.defaultProps = {
+  action: null,
+};
 const styles = StyleSheet.create({
   container:{
     height:75,
@@ -55,18 +98,18 @@ const styles = StyleSheet.create({
     fontSize:20,
     fontFamily:'PingFangSC-Regular'
   },
-  message: {
+  sms: {
     flex:3,
     height:40,
     flexDirection: 'row',
     alignItems:'center',
 
   },
-  clickable:{
+  text:{
     borderColor:'#EDEDED',
     borderLeftWidth:1,
     paddingLeft:15,
-    fontSize:18,
+    fontSize:16,
     fontFamily:'PingFangSC-Regular',
     color:'rgba(114,109,254,1)'
   }

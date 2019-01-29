@@ -9,7 +9,7 @@ import React, { PureComponent } from 'react';
 import {
     StyleSheet,
     Text,TouchableOpacity,
-    View,Image,ScrollView
+    View,Image,ScrollView,Picker
 } from 'react-native';
 
 import {UITextInput,UIButton} from '../../../main/component/UIComponents'
@@ -22,18 +22,23 @@ const defaultProps = {
 const defaultState = {
 
 };
-@CommonHead('充值')
+
 export default class PayWayView extends PureComponent {
 
     constructor(props) {
         super(props);
+
+        this.state =  {
+            language: '',
+      };
     }
 
 
-
     render() {
+      const {BTDatas} = this.props;
       // console.log('2222222222222222',this.props)
-
+      // const Array=[{label:'1',value:'1'},{label:'2',value:'2'}]
+      // console.log('2222222222222222',BTDatas)
         return (
 
            <View style={styles.container}>
@@ -45,8 +50,9 @@ export default class PayWayView extends PureComponent {
                       </View>
                       <View style={styles.listRightView}>
                           <UITextInput  placeholder='请输入充值数量'
+                            keyboardType={'numeric'}
                               textInputstyles={styles.textInputStyle}
-                              onChangeText={(text) => this.setState({password:text})}/>
+                              onChangeText={(text) =>  this.props.fcInput(text)}/>
                       </View>
                         <Text style={styles.bodyText}>个</Text>
                     </View>
@@ -59,10 +65,8 @@ export default class PayWayView extends PureComponent {
                       <View style={styles.listLeftView}>
                         <Text style={styles.bodyText2}>交易总额:</Text>
                       </View>
-                      <View style={styles.listRightView}>
-                      <UITextInput
-                          textInputstyles={styles.textInputStyle}
-                          onChangeText={(text) => this.setState({password:text})}/>
+                      <View style={styles.listRightView2}>
+                        <Text style={styles.bodyText2}>{this.props.total}</Text>
                       </View>
                       <Text style={styles.bodyText2}>元</Text>
                     </View>
@@ -78,23 +82,25 @@ export default class PayWayView extends PureComponent {
 
 
 
+              {BTDatas.length>0?
+                <View style={styles.ScrollableLayout2}>
+                  <View style={styles.listView}>
+                <Picker
+                 style={{width:350}}
+                 selectedValue={this.props.cardNumber}
+                 onValueChange={(value,itemIndex) => this.props.handleChoosePress(value,itemIndex)}>
+                 {
 
+                    BTDatas.map((item)=>  <Picker.Item label={item.label} value={item.value} key={item}/>)
+                }
 
-                    <View style={styles.ScrollableLayout2}>
-                      <View style={styles.listView}>
-                        <View style={styles.listLeftView}>
-                          <Text style={styles.bodyText}>光大银行卡</Text>
-                        </View>
-                        <View style={styles.bottomRightView}>
-                          <Text style={styles.bodyText2}>622**** ****987</Text>
-                        </View>
-                        <View style={styles.arrow}>
-                          <Image  source={Img.Arrow} style={styles.arrowImg}/>
-                        </View>
-                      </View>
+               </Picker>
 
-                      </View>
+               </View>
 
+               </View>
+                :null
+              }
 
 
 
@@ -103,7 +109,7 @@ export default class PayWayView extends PureComponent {
                       <View style={styles.bottomView3}>
                               <View style={styles.buttonLayoutStyle}>
                                           <UIButton text='确认充值' style={styles.button}
-                                          handlePress={this.props.handleAgreePress}/>
+                                          onPress={this.props.handleAgreePress}/>
                               </View>
 
                     </View>
@@ -177,7 +183,7 @@ const styles = StyleSheet.create({
 
   bottomView3:{
 
-    backgroundColor: '#F8F8F8'
+    backgroundColor: '#FFFFFF'
   },
   body:{
     flex:1,
@@ -214,6 +220,10 @@ const styles = StyleSheet.create({
   },
   listRightView:{
     width:Constant.deviceWidth*0.39,
+  },
+  listRightView2:{
+    width:Constant.deviceWidth*0.36,
+    marginLeft:13
   },
   button: {
     width: Constant.deviceWidth*0.7,

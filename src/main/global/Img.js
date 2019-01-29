@@ -22,7 +22,7 @@ global.Img = {
   CheckBoxCheckedImage:require('../../img/CheckBoxCheckedImage.png'),
   CheckBoxUnCheckedImage:require('../../img/CheckBoxUnCheckedImage.png'),
 
-  Splash:require('../../img/Splash.png'),
+  // Splash:require('../../img/Splash.png'),
   Avator:require('../../img/Avator.png'),
 
 
@@ -30,5 +30,11 @@ global.Img = {
   Arrow:require('../../img/Arrow.png'),
   PaySuccess:require('../../img/PaySuccess.png'),
   PayFalse:require('../../img/PayFalse.png'),
+
+  BankCardBg2:require('../../img/BankCardBg2.png'),
+  BankCardBg1:require('../../img/BankCardBg1.png'),
+
+
+  kefu:require('../../img/kefu.png'),
 
 }

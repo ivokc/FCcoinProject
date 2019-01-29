@@ -10,34 +10,36 @@ export default class UserView extends React.Component {
   onMenuItemPress = () => {
   }
   render() {
-    let mail = '37705688@qq.com'
-    let phone = '15618920920'
+    let mobile = this.props.userInfo ?  this.props.userInfo.mobile : '';
+    let userName = this.props.userInfo ?  this.props.userInfo.userName : '';
+    let email = this.props.userInfo ?  this.props.userInfo.email : '';
+
     return (
       <View style={styles.container}>
         <ImageBackground style={styles.profile} source={Img.AssertsBg}>
           <Image source={Img.Avator} style={{width:80,height:80}}/>
           <View style={styles.UserInfoBox}>
-            <Text style={styles.UserNameText}>过眼云烟</Text>
+            <Text style={styles.UserNameText}>{userName}</Text>
             <Text style={styles.UserInfoText}>
               <Icon name='mail' size={17} color="#D5CCFF" />&nbsp;&nbsp;
-                {mail}
+                {email}
               </Text>
             <Text style={styles.UserInfoText}>
               <Icon name='mobile1' size={17} color="#D5CCFF" />&nbsp;&nbsp;
-                {phone}
+                {mobile}
             </Text>
           </View>
         </ImageBackground>
         <View style={styles.content}>
-          <UIRow style={{marginTop:20}}>
+          <UIRow style={{marginTop:20}} onPress={()=>{this.props.navigation.navigate('UserBankAcct')}}>
             <Image style={styles.contentPic} source={Img.PayAccount} />
             <Text style={styles.contentTxt}>我的银行卡</Text>
           </UIRow>
-          <UIRow style={styles.contentRow}>
+          <UIRow  onPress={()=>{this.props.navigation.navigate('UserChangePwd')}}>
             <Image style={styles.contentPic} source={Img.Lock} />
             <Text style={styles.contentTxt}>修改登录密码</Text>
           </UIRow>
-          <UIRow style={{marginTop:20}}>
+          <UIRow style={{marginTop:20}} onPress={this.props.handleLogout}>
             <Image style={styles.contentPic} source={Img.Quit} />
             <Text style={styles.contentTxt}>退出登录</Text>
           </UIRow>
@@ -45,6 +47,9 @@ export default class UserView extends React.Component {
       </View>
     );
   }
+}
+UserView.navigationOptions ={
+  title:'我的'
 }
 const styles = StyleSheet.create({
   container: {

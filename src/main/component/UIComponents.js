@@ -13,3 +13,8 @@ export { default as UIButton} from './formItem/UIButton';
 export { default as UICheckBox} from './formItem/UICheckBox';
 export { default as UIRow} from './formItem/UIRow';
 export { default as UITextInput} from './formItem/UITextInput';
+export { default as UILabelInput} from './formItem/UILabelInput';
+export { default as UILabelPicker} from './formItem/UILabelPicker';
+export { default as UIAcctItem} from './widget/UIAcctItem';
+export { default as UILoading} from './widget/UILoading';
+export { default as UIMessage} from './widget/UIMessage';
