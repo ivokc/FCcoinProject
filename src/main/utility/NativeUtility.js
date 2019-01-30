@@ -9,6 +9,8 @@ const NativeUtility = {
     Linking.canOpenURL(url).then(supported => {
       if (supported) {
           Linking.openURL(url);
+      }else{
+        Mymessage.show('请先安装QQ,再重试');
       }
     });
   },

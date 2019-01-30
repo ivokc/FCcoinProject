@@ -7,11 +7,14 @@ import Icon from 'react-native-vector-icons/AntDesign';
 export default class UIIconInput extends React.Component {
 
   state = {
-    second:60
+    second:0
   }
   componentWillMount() {
     if(this.props.action === 'sms') {
-      this.startTimer()
+      // this.startTimer()
+      this.setState({
+        actionLabel:'发送短信'
+      })
     }
     
   }
@@ -39,6 +42,9 @@ export default class UIIconInput extends React.Component {
 
   handleActionPress = () => {
     this.startTimer();
+    this.setState({
+      actionLabel:'重新发送'
+    })
     this.props.handleActionPress();
 
   }
@@ -54,7 +60,7 @@ export default class UIIconInput extends React.Component {
       }else{
         return (
           <TouchableWithoutFeedback onPress={this.handleActionPress} style={styles.sms}>
-            <Text style={styles.text}>重新发送</Text>
+            <Text style={styles.text}>{this.state.actionLabel}</Text>
           </TouchableWithoutFeedback>
         );
       }

@@ -34,7 +34,7 @@ export default class UserBankAcctView extends React.Component {
           this.props.bankAcct ? this.props.bankAcct.list.map((acct,index) => (
 
             <UIAcctItem key={index} bankName={acct.bankName} 
-              acctType={`${acct.cardBranchName}(${acct.cardUserName})`} 
+              acctType={acct.cardUserName} 
               acctNo={acct.cardCode}
               acctStatus={acct.status}
               onToggleStatePress={this.handleToggleState}

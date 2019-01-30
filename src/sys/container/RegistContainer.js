@@ -5,8 +5,8 @@ import {sendSmsIntf} from '../vendor/Intf';
 
 const handleNextStep = async ({params,dispatch,ownProps}) => {
   try {
-    let result = await sendSmsIntf({...params});
-    console.log('handleNextStep',result);
+    // let result = await sendSmsIntf({...params});
+    // console.log('handleNextStep',result);
     ownProps.navigation.navigate('RegistMsg',params);
   } catch (error) {
     console.log('handleNextStep',error);

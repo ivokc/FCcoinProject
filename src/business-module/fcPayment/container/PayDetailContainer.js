@@ -18,7 +18,7 @@ const defaultProps = {
 const defaultState = {
 
 };
-@CommonHead('付款详情页')
+@CommonHead('付款详情页',true)
 class PayDetailContainer extends PureComponent {
 
     constructor(props) {

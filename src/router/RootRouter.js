@@ -8,6 +8,8 @@ import LoginContainer from "../sys/container/LoginContainer";
 import RegistContainer from "../sys/container/RegistContainer";
 import RegistMsgContainer from "../sys/container/RegistMsgContainer";
 import AuthLoading from "../sys/AuthLoading";
+import HelpView from '../sys/view/HelpView';
+
 import UserContainer from "../business-module/user/container/UserContainer";
 
 import PayListContainer from "../business-module/fcPayment/container/PayListContainer";
@@ -18,7 +20,6 @@ import PayWayContainer from "../business-module/fcRecharge/container/PayWayConta
 import PayResultContainer from "../business-module/fcRecharge/container/PayResultContainer";
 import OrderListContainer from "../business-module/fcOrder/container/OrderListContainer";
 import PayQRCodeContainer from "../business-module/fcRecharge/container/PayQRCodeContainer";
-
 
 
 import UserChangePwdContainer from '../business-module/user/container/UserChangePwdContainer';
@@ -106,6 +107,7 @@ const AppStack = createStackNavigator({
   UserChangePwd:UserChangePwdContainer,
   UserBankAcct:UserBankAcctContainer,
   UserAddBankAcct:UserAddBankAcctContainer,
+  Help:HelpView,
 },{
   //全系统默认head
   // defaultNavigationOptions:{

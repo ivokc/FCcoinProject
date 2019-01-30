@@ -21,13 +21,14 @@ const defaultProps = {
 };
 
 const defaultState = {
-
+    isRefreshing:false,
 };
 
 export default class OrderListView extends PureComponent {
 
     constructor(props) {
         super(props);
+          this.state = defaultState;
     }
 
 
@@ -65,7 +66,14 @@ export default class OrderListView extends PureComponent {
 
               <View style={styles.body}>
                   <ScrollView style={styles.ScrollableLayout}
-
+                  refreshControl={
+                    <RefreshControl
+                        refreshing={this.state.isRefreshing}
+                        onRefresh={this.props.onRefresh.bind(this)}
+                        colors={['black','red']}
+                        progressBackgroundColor="#ffffff"
+                    />
+                    }
                             >
                                   {this.renderList()}
 

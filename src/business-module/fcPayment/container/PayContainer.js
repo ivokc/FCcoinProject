@@ -18,7 +18,7 @@ const defaultProps = {
 const defaultState = {
           second:600
 };
-@CommonHead('付款详情页')
+@CommonHead('付款详情页',true)
 class PayContainer extends PureComponent {
 
     constructor(props) {
@@ -71,8 +71,12 @@ class PayContainer extends PureComponent {
                      if(response.result=='false'||response.result==false){
                         throw new Error(response.message)
                      }else {
-                       Mymessage.show(response.message)
-                       this.props.navigation.navigate('Home');
+                       Mymessage.show('您的订单正在确认，请稍后查看')
+
+                               setTimeout(() =>{
+                                  this.props.navigation.navigate('PayList')
+                               },3000);
+
                     }
 
                     // if(response.result=='true'){

@@ -110,6 +110,11 @@ class PayWayContainer extends PureComponent {
         console.log('~~~~~~~44444444444444~~~~~~~')
         console.log('~~~~~~~value~~~~~~~',Regex.intege1.test(this.state.total))
         if(Regex.intege1.test(this.state.total)){
+            if(this.state.total<100){
+               Mymessage.show('充值最小为100')
+               return
+            }
+
                 creatRechargeOrderTask(this.props.sessionId,this.state.total,this.state.cardNumber).then((response) =>{
 
                     console.log('~~~~~~~creatRechargeOrderTask~~~~~~~',response)

@@ -64,20 +64,17 @@ class OrderListContainer extends PureComponent {
                let status=''
                let statusStyle=''
                   if(response.data.list[i].orderStatus=='0'){
-                    status='待支付'
-                    statusStyle='red'
-                  }else if (response.data.list[i].orderStatus=='1') {
-                    status='已支付'
-                    statusStyle='green'
-                  }else if (response.data.list[i].orderStatus=='2') {
                     status='已完成'
                     statusStyle='green'
-                  }else if (response.data.list[i].orderStatus=='3') {
-                    status='取消'
-                    statusStyle='grey'
-                  }else if (response.data.list[i].orderStatus=='4') {
-                    status='超时'
+                  }else if (response.data.list[i].orderStatus=='1') {
+                    status='支付失败'
                     statusStyle='red'
+                  }else if (response.data.list[i].orderStatus=='2') {
+                    status='未支付'
+                    statusStyle='red'
+                  }else if (response.data.list[i].orderStatus=='3') {
+                    status='待确认'
+                    statusStyle='grey'
                   }else {
                       status=''
                       statusStyle='grey'
@@ -107,6 +104,17 @@ class OrderListContainer extends PureComponent {
      }
 
 
+          //下拉刷新
+          onRefresh = () =>{
+            // console.log('3333333333333')
+
+              setTimeout(() =>{
+
+
+                 this.getList()
+              },2000);
+
+          }
 
 
     render() {
@@ -116,7 +124,7 @@ class OrderListContainer extends PureComponent {
             <OrderListView
               navigation={this.props.navigation}
               BTDatas={this.state.BTDatas}
-
+              onRefresh={this.getList}
               />
         );
     }

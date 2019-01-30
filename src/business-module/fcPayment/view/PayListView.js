@@ -9,7 +9,7 @@ import React, { PureComponent } from 'react';
 import {
     StyleSheet,
     Text,TouchableOpacity,
-    View,Image,ScrollView
+    View,Image,ScrollView,RefreshControl
 } from 'react-native';
 
 import ListMenuView from '../components/ListMenuView';
@@ -22,13 +22,14 @@ const defaultProps = {
 };
 
 const defaultState = {
-
+    isRefreshing:false,
 };
 
 export default class PayListView extends PureComponent {
 
     constructor(props) {
         super(props);
+          this.state = defaultState;
     }
 
 
@@ -64,10 +65,20 @@ export default class PayListView extends PureComponent {
         return (
 
            <View style={styles.container}>
-      
+
 
               <View style={styles.body}>
-                  <ScrollView style={styles.ScrollableLayout}>
+                  <ScrollView style={styles.ScrollableLayout}
+                  refreshControl={
+                    <RefreshControl
+                        refreshing={this.state.isRefreshing}
+                        onRefresh={this.props.onRefresh.bind(this)}
+                        colors={['black','red']}
+                        progressBackgroundColor="#ffffff"
+                    />
+                    }
+
+                  >
                                   {this.renderList()}
 
                     </ScrollView>

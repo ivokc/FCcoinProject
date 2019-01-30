@@ -75,7 +75,7 @@ export default class HomeView extends React.Component {
         </ImageBackground>
 
         <View style={styles.content}>
-          <UIRow style={{marginTop:20}} onPress={()=>{this.props.navigation.navigate('UserBankAcct')}}>
+          <UIRow style={{marginTop:10}} onPress={()=>{this.props.navigation.navigate('UserBankAcct')}}>
             <Image style={styles.contentPic} source={Img.PayAccount} />
             <Text style={styles.contentTxt}>我的银行卡</Text>
           </UIRow>
@@ -83,7 +83,12 @@ export default class HomeView extends React.Component {
             <Image style={styles.contentPic} source={Img.Lock} />
             <Text style={styles.contentTxt}>修改登录密码</Text>
           </UIRow>
-          <UIRow style={{marginTop:20}} onPress={this.props.handleLogout}>
+          <UIRow  onPress={()=>{this.props.navigation.navigate('Help')}}>
+            <Image style={styles.contentPic} source={Img.HelpIcon} />
+            <Text style={styles.contentTxt}>帮助中心</Text>
+          </UIRow>
+
+          <UIRow style={{marginTop:10}} onPress={this.props.handleLogout}>
             <Image style={styles.contentPic} source={Img.Quit} />
             <Text style={styles.contentTxt}>退出登录</Text>
           </UIRow>

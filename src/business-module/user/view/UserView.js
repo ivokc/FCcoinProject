@@ -31,7 +31,7 @@ export default class UserView extends React.Component {
           </View>
         </ImageBackground>
         <View style={styles.content}>
-          <UIRow style={{marginTop:20}} onPress={()=>{this.props.navigation.navigate('UserBankAcct')}}>
+          <UIRow style={{marginTop:10}} onPress={()=>{this.props.navigation.navigate('UserBankAcct')}}>
             <Image style={styles.contentPic} source={Img.PayAccount} />
             <Text style={styles.contentTxt}>我的银行卡</Text>
           </UIRow>
@@ -39,7 +39,7 @@ export default class UserView extends React.Component {
             <Image style={styles.contentPic} source={Img.Lock} />
             <Text style={styles.contentTxt}>修改登录密码</Text>
           </UIRow>
-          <UIRow style={{marginTop:20}} onPress={this.props.handleLogout}>
+          <UIRow style={{marginTop:10}} onPress={this.props.handleLogout}>
             <Image style={styles.contentPic} source={Img.Quit} />
             <Text style={styles.contentTxt}>退出登录</Text>
           </UIRow>

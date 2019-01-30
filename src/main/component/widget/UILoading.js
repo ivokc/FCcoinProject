@@ -18,7 +18,7 @@ export default class UILoading extends React.Component {
   render() {
      return (
       <Modal
-          animationType="slide"
+          animationType="fade"
           transparent={true}
           visible={this.state.visible}
           onRequestClose={() => {

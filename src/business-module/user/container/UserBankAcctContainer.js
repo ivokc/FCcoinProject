@@ -14,7 +14,7 @@ const userBankAcctInit = async ({params,dispatch,ownProps}) => {
 }
 const handleDisableBankData = async ({params,dispatch,ownProps}) => {
   try {
-    let result = await disableBankDataIntf({sessionId});
+    let result = await disableBankDataIntf({...params,sessionId});
     console.log('userBankAcctInit',result);
     userBankAcctInit({dispatch});
   } catch (error) {

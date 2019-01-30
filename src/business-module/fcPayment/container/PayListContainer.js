@@ -29,7 +29,7 @@ const defaultState = {
     userName:'test001',
     password:'123456',
 };
-@CommonHead('充值明细',true)
+@CommonHead('充值明细')
 class PayListContainer extends PureComponent {
 
     constructor(props) {
@@ -58,7 +58,7 @@ class PayListContainer extends PureComponent {
            let tempBTDatas=[]
            let BTData={}
            if(response.data.list.length>0){
-                Constant.qqNum = response.data.list[0].payeeFpUser.qq
+                // Constant.qqNum = response.data.list[0].payeeFpUser.qq
 
              for(var i = 0; i < response.data.list.length; i++){
 
@@ -109,8 +109,8 @@ class PayListContainer extends PureComponent {
      handleChoosePress = (pickedData) => {
       console.log('4444',pickedData.data);
 
-        console.log('4444',pickedData.tradeNum);
-
+        console.log('444444444444444',pickedData.data.payeeFpUser.qq);
+        Constant.qqNum = pickedData.data.payeeFpUser.qq
         if(pickedData.status=='0'){
           //跳待支付
 
@@ -131,7 +131,17 @@ class PayListContainer extends PureComponent {
 
     };
 
+    //下拉刷新
+    onRefresh = () =>{
+      // console.log('3333333333333')
 
+        setTimeout(() =>{
+
+
+           this.getList()
+        },2000);
+
+    }
     render() {
       // console.log('33333333333',this.state.BTDatas)
 
@@ -140,6 +150,7 @@ class PayListContainer extends PureComponent {
               navigation={this.props.navigation}
               BTDatas={this.state.BTDatas}
               handleChoosePress={this.handleChoosePress}
+                onRefresh={this.getList}
               />
         );
     }

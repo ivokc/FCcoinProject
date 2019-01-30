@@ -10,19 +10,19 @@ export default class UIAcctItem extends React.Component {
       <ImageBackground style={styles.container} source={randomNum == 0 ? Img.BankCardBg1 : Img.BankCardBg2} >
         <View style={{flex:3}}>
           <Text style={[styles.cardtext,{fontSize:20,marginLeft:40}]}> {this.props.bankName} </Text>
-          <Text style={[styles.cardtext,{fontSize:14,marginLeft:40}]}> {this.props.acctType} </Text>
-          <Text style={[styles.cardtext,{fontSize:18,marginTop:20,marginLeft:20}]}> 
+          <Text style={[styles.cardtext,{fontSize:14,marginLeft:45,marginTop:5}]}> {this.props.acctType} </Text>
+          <Text style={[styles.cardtext,{fontSize:18,marginTop:15,marginLeft:20}]}> 
             {this.props.acctNo.replacePos(5,15,' *** **** ****')}
           </Text>
         </View>
         <View style={{flex:1}}>
-          <TouchableWithoutFeedback onPress={()=> {this.props.onToggleStatePress(this.props.acctNo,this.props.acctStatus)}}>
+          {/* <TouchableWithoutFeedback onPress={()=> {this.props.onToggleStatePress(this.props.acctNo,this.props.acctStatus)}}>
             <View style={styles.button}>
               <Text style={[styles.buttontext,randomNum == 0 ? {color:'#639AFE'} : {color:'#FD896E'}]}>
                 {this.props.acctStatus == '2' ? '启用' : '停用'}
               </Text>
             </View>
-          </TouchableWithoutFeedback>
+          </TouchableWithoutFeedback> */}
           <TouchableWithoutFeedback onPress={()=> {this.props.onDeletePress(this.props.acctNo)} }>
             <View style={styles.button}>
               <Text style={[styles.buttontext,randomNum == 0 ? {color:'#639AFE'} : {color:'#FD896E'}]}>删除</Text>

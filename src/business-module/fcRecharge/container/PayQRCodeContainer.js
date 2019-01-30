@@ -51,7 +51,14 @@ class PayQRCodeContainer extends PureComponent {
      handleAgreePress=()=>{
         // console.log('~~~~~~~44444444444444~~~~~~~')
           if(Regex.intege1.test(this.state.total)){
+
+            if(this.state.total<100){
+               Mymessage.show('充值最小为100')
+               return
+            }
+
             let qrcode = this.props.navigation.getParam('qrcode','');
+              // let qrcode = this.state.merchantOrderCode
             creatPaymentOrderTask(this.props.sessionId,this.state.total,qrcode).then((response) =>{
 
                 console.log('~~~~~~~creatPaymentOrderTask~~~~~~~',response)
