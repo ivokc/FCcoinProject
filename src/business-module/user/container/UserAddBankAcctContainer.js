@@ -7,8 +7,8 @@ import {getBankSelectDataListAction} from '../vendor/dataflow/Action'
 let sessionId;
 const userAddBankAcctInit = async ({params,dispatch,ownProps}) => {
   try {
-    let bankSelectList = await getBankSelectDataListIntf({sessionId});
-    dispatch(getBankSelectDataListAction(bankSelectList))
+    let result = await getBankSelectDataListIntf({sessionId});
+    dispatch(getBankSelectDataListAction(result.data))
     console.log('userAddBankAcctInit',bankSelectList);
   } catch (error) {
     console.log('userAddBankAcctIniterror',error);
@@ -36,6 +36,7 @@ const mapStateToProps = (state,ownProps) => {
   sessionId = state.userReducer ? state.userReducer.sessionid : 1;
   console.log('userBankAcctsessionId',state.userReducer);
   return {
+    sessionId:state.userReducer ? state.userReducer.sessionid : 1,
     bankSelectList: state.bankAcctReducer.bankSelect,
   };
 };

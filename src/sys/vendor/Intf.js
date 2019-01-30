@@ -35,15 +35,7 @@ function userRegisterIntf({mobile,email,password,userName,smsCode}) {
     smsCode,
     __ajax:'json',
   };
-  return Just.getRequest(Url.userRegister,params).then((result) =>{
-    if (result.result !== 'true') {
-      return Promise.reject(result.message);
-    }else{
-      return Promise.resolve(result);
-    }
-  },(error) =>{
-    return Promise.reject(error);
-  });
+  return Just.getRequest(Url.userRegister,params);
   
 }
 /*
@@ -56,6 +48,7 @@ function sendSmsIntf({mobile}) {
 
   };
   return Just.getRequest(Url.sendSms,params);
+
 }
 
 /*

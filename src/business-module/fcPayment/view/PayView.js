@@ -26,7 +26,16 @@ export default class PayView extends PureComponent {
 
     constructor(props) {
         super(props);
+        this.state =  {
+            language: '',
+
+      };
     }
+
+    componentWillMount() {
+
+    }
+
 
 
 
@@ -133,24 +142,24 @@ export default class PayView extends PureComponent {
                       </View>
                     </View>
 
-                    <View style={styles.listView}>
-                      <View style={styles.listLeftView}>
-                        <Text style={styles.bodyText}>付款账号：</Text>
+                      <View style={styles.listView}>
+                        <View style={styles.listLeftView}>
+                          <Text style={styles.bodyText}>付款账号：</Text>
+                        </View>
+                        <View style={styles.listRightView}>
+                          <Text style={styles.bodyText2}>615211</Text>
+                        </View>
                       </View>
-                      <View style={styles.listRightView}>
-                        <Text style={styles.bodyText2}>615211</Text>
-                      </View>
-                    </View>
                     </View>
                     <View style={styles.ScrollableLayout2}>
                       <View style={styles.buttonLayoutStyle}>
-                                <UIButton text='剩余10分钟自动取消' style={styles.button}
-                                handlePress={this.props.handleAgreePress}/>
+                              <UIButton text={'剩余'+parseInt(this.props.second/60)+'分钟自动取消'}  style={styles.button}
+                                handlePress={this.props.handleCancelPress}/>
                       </View>
 
                       <View style={styles.buttonLayoutStyle}>
                                 <UIButton text='我已线下付款' style={styles.button}
-                                handlePress={this.props.handleAgreePress}/>
+                                 onPress={this.props.handleAgreePress}/>
                       </View>
 
                       <View style={styles.bottom}>

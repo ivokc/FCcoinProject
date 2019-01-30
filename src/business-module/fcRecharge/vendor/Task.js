@@ -10,13 +10,13 @@ export function getBankDatasTask(sid) {
 
 
 export function creatRechargeOrderTask(sid,orderNum,cardCode) {
-      // console.log('getRechargeOrderIntf~~33333333333333333333333');
   const params = {
      orderNum:orderNum,
      cardCode:cardCode,
     __ajax:'json',
     __sid:sid//sid
   };
+  console.log('creatRechargeOrderTask~~33333333333333333333333',params);
   return Just.getRequest('/js/a/api/creatRechargeOrder',params);
 }
 

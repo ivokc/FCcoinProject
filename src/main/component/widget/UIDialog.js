@@ -2,7 +2,7 @@ import React from "react";
 import {Modal,View,StyleSheet,TouchableWithoutFeedback,Text} from "react-native";
 
 
-export default class UIMessage extends React.Component {
+export default class UIDialog extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
@@ -11,12 +11,7 @@ export default class UIMessage extends React.Component {
       };
   }
   show(msg){
-    
     this.setState({visible:true,msg})
-    this.timer = setTimeout(() => {
-      this.state.visible && this.setState({visible:false,msg:''});
-      this.timer && clearInterval(this.timer);
-    }, 5000); 
   }
   hide(){
       this.setState({visible:false})
@@ -29,17 +24,14 @@ export default class UIMessage extends React.Component {
           visible={this.state.visible}
           onRequestClose={() => {
             this.setState({visible:false})
-
           }}
         >
-          <TouchableWithoutFeedback onPress={() => {this.setState({visible:false})}}>
-            <View style={styles.background}>
-              <View style={styles.container} >
-                <Text style={styles.msg}>{this.state.msg}</Text>
-              </View>
-            </View>
+        <View style={styles.background}>
+          <View style={styles.container} >
+            <Text style={styles.msg}>{this.state.msg}</Text>
+          </View>
+        </View>
             
-          </TouchableWithoutFeedback>
       </Modal>
      )
   }    
@@ -48,13 +40,16 @@ const styles = StyleSheet.create({
   background:{
     flex:1,
     justifyContent:'center',
-    padding:30
+    padding:50,
+    backgroundColor:'#000000',
+    opacity:0.7,
   },
   container:{ 
-    height:40,
-    backgroundColor:'#000000',
-    opacity:0.5,
+    height:120,
+    backgroundColor:'white',
     borderRadius:7,
+    elevation:3,
+    zIndex:1
   },
   msg:{
     textAlign:'center',

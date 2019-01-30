@@ -37,6 +37,12 @@ export default class UIIconInput extends React.Component {
     }, 1000); 
   }
 
+  handleActionPress = () => {
+    this.startTimer();
+    this.props.handleActionPress();
+
+  }
+
   renderAction = () => {
     if (this.props.action === 'sms') {
       if(this.state.second != 0) {
@@ -47,7 +53,7 @@ export default class UIIconInput extends React.Component {
         );
       }else{
         return (
-          <TouchableWithoutFeedback onPress={this.startTimer} style={styles.sms}>
+          <TouchableWithoutFeedback onPress={this.handleActionPress} style={styles.sms}>
             <Text style={styles.text}>重新发送</Text>
           </TouchableWithoutFeedback>
         );

@@ -8,6 +8,8 @@ async function loginTask(params,dispatch) {
     let username = Just.encode(params.username,Constant.encryptKey);
   
     let userInfo = await loginIntf({username,password});
+    console.log('loginTaskuserInfomessage',userInfo.message);
+    
     if (userInfo.result === 'false') {
       throw new Error(userInfo.message);
     }

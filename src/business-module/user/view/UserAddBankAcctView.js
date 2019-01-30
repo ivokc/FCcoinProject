@@ -1,7 +1,8 @@
 import React from "react";
 import { View,StyleSheet,Text} from "react-native";
 import {UILabelInput,UILabelPicker, UIButton,} from '../../../main/component/UIComponents'
-
+import {getBankSelectDataListIntf,addBankDatasIntf} from '../vendor/Intf'
+import {getBankSelectDataListAction} from '../vendor/dataflow/Action'
 
 @CommonHead('绑定银行卡')
 @AutoHideKeyboard
@@ -10,10 +11,33 @@ export default class UserAddBankAcctView extends React.Component {
   state ={
     cardUserName:'',
     bankName:'',
-    cardNumber:''
+    cardNumber:'',
+    pickerData:[]
   }
   componentWillMount() {
-    this.props.userAddBankAcctInit()
+    this.userAddBankAcctInit()
+    
+  }
+   userAddBankAcctInit = async () => {
+     let {sessionId} = this.props;
+    try {
+      let result = await getBankSelectDataListIntf({sessionId});
+      console.log('userAddBankAcctInit',result);
+
+      pickerData = Object.keys(result.data).map((ele) => {
+        return {
+          text:result.data[ele].bankName,
+          value:result.data[ele].id
+        }
+      });
+      this.setState({
+        bankName: pickerData[0].value,
+        pickerData
+      });
+    } catch (error) {
+      console.log('userAddBankAcctIniterror',error);
+    }
+    
   }
 
   validateForm = () => {
@@ -28,21 +52,12 @@ export default class UserAddBankAcctView extends React.Component {
   }
   render() {
     let validateOk = this.validateForm();
-
-    let pickerData = [];
-
-    if(this.props.bankSelectList){
-      pickerData = Object.keys(this.props.bankSelectList).map((ele) => {
-        return {
-          text:this.props.bankSelectList[ele].bankName,
-          value:this.props.bankSelectList[ele].id
-        }
-      })
-    }
+   
     return (
       <View style={styles.container}>
-        <UILabelInput style={{marginTop:20}} label='账户名称' placeholder='请输入账户姓名' onChangeText={(text) => this.setState({cardUserName:text})}/>
-        <UILabelPicker label='银行名称' data={pickerData} selectedValue={this.state.bankName}
+        <UILabelInput style={{marginTop:20}} label='账户名称' placeholder='请输入账户姓名' 
+          onChangeText={(text) => this.setState({cardUserName:text})}/>
+        <UILabelPicker label='银行名称' data={this.state.pickerData} selectedValue={this.state.bankName}
           onValueChange={(itemValue,itemIndex) => this.setState({bankName:itemValue})}/>
         <UILabelInput label='银行账号' placeholder='请输入银行卡号' onChangeText={(text) => this.setState({cardNumber:text})}/>
         

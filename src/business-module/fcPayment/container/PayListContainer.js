@@ -53,42 +53,42 @@ class PayListContainer extends PureComponent {
 
        getRechargeOrderTask(this.props.sessionId).then((response) =>{
 
-           console.log('~~~~~~~getRechargeOrderTask~~~~~~~',response.list[0])
+           console.log('~~~~~~~getRechargeOrderTask~~~~~~~',response.data.list[0])
 
            let tempBTDatas=[]
            let BTData={}
-           if(response.list.length>0){
-                Constant.qqNum = response.list[0].payeeFpUser.qq
+           if(response.data.list.length>0){
+                Constant.qqNum = response.data.list[0].payeeFpUser.qq
 
-             for(var i = 0; i < response.list.length; i++){
+             for(var i = 0; i < response.data.list.length; i++){
 
                let statusShow=''
                let statusStyle=''
-                  if(response.list[i].orderStatus=='0'){
+                  if(response.data.list[i].orderStatus=='0'){
                     statusShow='待支付'
                     statusStyle='red'
-                  }else if (response.list[i].orderStatus=='1') {
+                  }else if (response.data.list[i].orderStatus=='1') {
                     statusShow='已支付'
                     statusStyle='green'
-                  }else if (response.list[i].orderStatus=='2') {
+                  }else if (response.data.list[i].orderStatus=='2') {
                     statusShow='已完成'
                     statusStyle='green'
-                  }else if (response.list[i].orderStatus=='3') {
+                  }else if (response.data.list[i].orderStatus=='3') {
                     statusShow='取消'
                     statusStyle='grey'
-                  }else if (response.list[i].orderStatus=='4') {
+                  }else if (response.data.list[i].orderStatus=='4') {
                     statusShow='超时'
                     statusStyle='red'
                   }
                   BTData={
-                    tradeNum:response.list[i].orderCode,
-                    date:response.list[i].creatTime,
-                    fcNum:response.list[i].fcNum,
-                    total:response.list[i].orderNum,
+                    tradeNum:response.data.list[i].orderCode,
+                    date:response.data.list[i].creatTime,
+                    fcNum:response.data.list[i].fcNum,
+                    total:response.data.list[i].orderNum,
                     statusShow:statusShow,
-                    status:response.list[i].orderStatus,
+                    status:response.data.list[i].orderStatus,
                     statusStyle:statusStyle,
-                    data:response.list[i],
+                    data:response.data.list[i],
                   }
                   tempBTDatas.push(BTData)
               }
@@ -100,6 +100,7 @@ class PayListContainer extends PureComponent {
        }).catch((error) => {
          // Just.dismissLoading();
          // Just.ErrorHandler(error,() => { this.handleLogin() });/
+            Mymessage.show(error)
          console.log('~~~~~~~error~~~~~~~',error)
       });
 

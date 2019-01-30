@@ -16,7 +16,7 @@ const defaultProps = {
 };
 
 const defaultState = {
-    merchantOrderCode:'12345',
+    merchantOrderCode:'JGRTDHJIOUOJKLHUFJGFRFREDP<MBDWEUJKJFTERTFCYGOHHFYTIHBUUIIOIIOIIOOOOO',
     BTDatas:[],
     cardNumbers:[],
     total:'',
@@ -50,24 +50,40 @@ class PayQRCodeContainer extends PureComponent {
 
      handleAgreePress=()=>{
         // console.log('~~~~~~~44444444444444~~~~~~~')
-       let qrcode = this.props.navigation.getParam('qrcode','');
-       creatPaymentOrderTask(this.props.sessionId,this.state.total,qrcode).then((response) =>{
+          if(Regex.intege1.test(this.state.total)){
+            let qrcode = this.props.navigation.getParam('qrcode','');
+            creatPaymentOrderTask(this.props.sessionId,this.state.total,qrcode).then((response) =>{
 
-           console.log('~~~~~~~creatPaymentOrderTask~~~~~~~',response)
-           let qrdata={}
-           qrdata={
-             orderCode:response.orderCode,
-             orderNum:response.orderNum,
-             merchantOrderCode:response.merchantOrderCode,
-             merchant:response.merchantFpUser.userName,
-           }
-             this.props.navigation.navigate('PayOrderDetail',qrdata);
+                console.log('~~~~~~~creatPaymentOrderTask~~~~~~~',response)
 
-       }).catch((error) => {
-         // Just.dismissLoading();
-         // Just.ErrorHandler(error,() => { this.handleLogin() });/
-         console.log('~~~~~~~error~~~~~~~',error)
-      });
+
+                if(response.result=='false'||response.result==false){
+                   throw new Error(response.message)
+                }else {
+
+                  let qrdata={}
+                  qrdata={
+                    orderCode:response.data.orderCode,
+                    orderNum:response.data.orderNum,
+                    merchantOrderCode:response.data.merchantOrderCode,
+                    merchant:response.data.merchantFpUser.userName,
+                  }
+                  this.props.navigation.navigate('PayOrderDetail',qrdata);
+
+                }
+
+
+
+            }).catch((error) => {
+              // Just.dismissLoading();
+              // Just.ErrorHandler(error,() => { this.handleLogin() });/
+               Mymessage.show(error)
+              console.log('~~~~~~~error~~~~~~~',error)
+           });
+          }else {
+             Mymessage.show('充值金额不正确')
+          }
+
      }
 
     render() {

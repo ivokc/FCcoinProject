@@ -7,17 +7,24 @@ import {UIIconInput,UIButton} from '../../main/component/UIComponents'
 export default class LoginView extends React.Component {
   state = {
     username:'',
-    password:''
+    password:'',
+    
   }
 
   handleLogin = () => {
     let {username,password} = this.state;
     
     this.props.handleLogin({username,password});
-
-    // Just.linking('weixin://');
+  }
+  validateForm = () => {
+    if (Object.keys(this.state).some((key) => this.state[key] === '')){
+      return false;
+    }else{
+      return true;
+    }
   }
   render() {
+    let validateOk = this.validateForm();
     
     return (
         <View style={styles.container}>
@@ -31,15 +38,15 @@ export default class LoginView extends React.Component {
             <UIIconInput  icon='mobile1' placeholder='请输入邮箱或手机号' 
               onChangeText={(text) => this.setState({username:text})}
             />
-            <UIIconInput icon='lock' placeholder='请输入登录密码' 
+            <UIIconInput icon='lock' placeholder='请输入登录密码' secureTextEntry={true}
             onChangeText={(text) => this.setState({password:text})}/>
           </View>
 
-          <UIButton style={styles.button} text='登录' onPress={this.handleLogin} />
+          <UIButton disabled={!validateOk} style={styles.button} text='登录' onPress={this.handleLogin} />
 
           <View style={styles.row} >
             <Text style={styles.clickText} onPress={() => this.props.navigation.navigate('Regist')}>注册账号</Text>
-            <Text style={styles.clickText}>忘记秘密</Text>
+            <Text style={styles.clickText} onPress={() => {Mydialog.show()}}>忘记密码</Text>
           </View>
         </View>
 

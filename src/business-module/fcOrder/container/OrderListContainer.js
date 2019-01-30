@@ -54,39 +54,42 @@ class OrderListContainer extends PureComponent {
 
        getPaymentOrdersTask(this.props.sessionId).then((response) =>{
 
-           console.log('~~~~~~~OrderListContainer~~~~~~~',response.list.length)
+           console.log('~~~~~~~OrderListContainer~~~~~~~',response.data.list.length)
 
            let tempBTDatas=[]
            let BTData={}
-           if(response.list.length>0){
-             for(var i = 0; i < response.list.length; i++){
+           if(response.data.list.length>0){
+             for(var i = 0; i < response.data.list.length; i++){
 
                let status=''
                let statusStyle=''
-                  if(response.list[i].orderStatus=='0'){
+                  if(response.data.list[i].orderStatus=='0'){
                     status='待支付'
                     statusStyle='red'
-                  }else if (response.list[i].orderStatus=='1') {
+                  }else if (response.data.list[i].orderStatus=='1') {
                     status='已支付'
                     statusStyle='green'
-                  }else if (response.list[i].orderStatus=='2') {
+                  }else if (response.data.list[i].orderStatus=='2') {
                     status='已完成'
                     statusStyle='green'
-                  }else if (response.list[i].orderStatus=='3') {
+                  }else if (response.data.list[i].orderStatus=='3') {
                     status='取消'
                     statusStyle='grey'
-                  }else if (response.list[i].orderStatus=='4') {
+                  }else if (response.data.list[i].orderStatus=='4') {
                     status='超时'
                     statusStyle='red'
+                  }else {
+                      status=''
+                      statusStyle='grey'
                   }
                   BTData={
-                    tradeNum:response.list[i].orderCode,
-                    date:response.list[i].creatTime,
-                    fcNum:response.list[i].orderNum,
+                    tradeNum:response.data.list[i].orderCode,
+                    date:response.data.list[i].creatTime,
+                    fcNum:response.data.list[i].orderNum,
                     status:status,
                     statusStyle:statusStyle,
-                    sellerName:response.list[i].merchantFpUser.refName,
-                    sellerNum:response.list[i].merchantOrderCode,
+                    sellerName:response.data.list[i].merchantFpUser.refName,
+                    sellerNum:response.data.list[i].merchantOrderCode,
                   }
                   tempBTDatas.push(BTData)
               }

@@ -3,7 +3,6 @@ import { View,StyleSheet,Image,ImageBackground,Text,TouchableOpacity} from "reac
 import {UIRow} from "../../main/component/UIComponents"
 
 
-
 export default class HomeView extends React.Component {
 
 
@@ -18,15 +17,20 @@ export default class HomeView extends React.Component {
   componentWillMount(){
     console.log('handleHomeInit');
     this.props.handleHomeInit();
+    this.didBlurSubscription = this.props.navigation.addListener(
+      'willFocus',
+      () => {
+        this.props.handleHomeInit();
+      }
+    );
+  }
+  componentWillUnmount(){
+    this.didBlurSubscription.remove();
   }
 
   render() {
     console.log('handleHomeInit | capAcct',this.props.capAcct);
-    let fcTotal,fcAmount, frozenFc;
-    if(this.props.capAcct){
-      
-      fcTotal = fcAmount + frozenFc;
-    }
+  
 
     return (
       
@@ -91,6 +95,7 @@ export default class HomeView extends React.Component {
 }
 HomeView.navigationOptions ={
   title:'首页',
+
 }
 const styles = StyleSheet.create({
   container: {

@@ -7,8 +7,8 @@ import {getBankAcctAction} from '../vendor/dataflow/Action'
 let sessionId;
 const userBankAcctInit = async ({params,dispatch,ownProps}) => {
   try {
-    let bankAcctList = await getBankDatasIntf({sessionId});
-    dispatch(getBankAcctAction(bankAcctList))
+    let result = await getBankDatasIntf({sessionId});
+    dispatch(getBankAcctAction(result.data))
   } catch (error) {
   }
 }
@@ -16,6 +16,7 @@ const handleDisableBankData = async ({params,dispatch,ownProps}) => {
   try {
     let result = await disableBankDataIntf({sessionId});
     console.log('userBankAcctInit',result);
+    userBankAcctInit({dispatch});
   } catch (error) {
     console.log('userBankAcctIniterror',error);
   }
@@ -24,6 +25,7 @@ const handleEnableBankData = async ({params,dispatch,ownProps}) => {
   try {
     let result = await enableBankDataIntf({...params,sessionId});
     console.log('userBankAcctInit',result);
+    userBankAcctInit({dispatch});
   } catch (error) {
     console.log('userBankAcctIniterror',error);
   }
@@ -31,10 +33,8 @@ const handleEnableBankData = async ({params,dispatch,ownProps}) => {
 const handleDeleteBankDatas = async ({params,dispatch,ownProps}) => {
   try {
     console.log('deleteBankDatasIntf',params);
-
     let result = await deleteBankDatasIntf({...params,sessionId});
-    let bankAcctList = await getBankDatasIntf({sessionId});
-    dispatch(getBankAcctAction(bankAcctList))
+    userBankAcctInit({dispatch});
     console.log('deleteBankDatasIntf',result);
   } catch (error) {
     console.log('deleteBankDatasIntf',error);

@@ -2,7 +2,7 @@ import React from "react";
 import { View,StyleSheet,Text} from "react-native";
 import {UIIconInput,UIButton,UICheckBox} from '../../../main/component/UIComponents'
 
-@CommonHead('修改登录密码',true)
+@CommonHead('修改登录密码')
 @AutoHideKeyboard
 export default class UserChangePwdView extends React.Component {
 

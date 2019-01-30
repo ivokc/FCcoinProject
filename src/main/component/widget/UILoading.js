@@ -1,5 +1,5 @@
 import React from "react";
-import {Modal,ActivityIndicator,StyleSheet,Text} from "react-native";
+import {Modal,ActivityIndicator,StyleSheet,Text,View} from "react-native";
 
 
 export default class UILoading extends React.Component {
@@ -25,13 +25,16 @@ export default class UILoading extends React.Component {
             // alert("Modal has been closed.");
           }}
         >
-          <ActivityIndicator style={styles.indicator} size="large" color="#0000ff" />
+          <View style={styles.container}>
+            <ActivityIndicator style={{marginTop:20}} size="large" color="white" />
+            <Text style={styles.text}>FPay</Text>
+          </View>
       </Modal>
      )
   }    
 }        
 const styles = StyleSheet.create({
-  indicator:{ 
+  container:{ 
     position:'absolute',
     left:Constant.deviceWidth/2 - 50,
     top:Constant.deviceHeight/2 - 100,
@@ -40,5 +43,13 @@ const styles = StyleSheet.create({
     backgroundColor:'#000000',
     opacity:0.5,
     borderRadius:13,
+  },
+  text:{
+    marginTop:10,
+    color:'white',
+    fontSize:17,
+    alignSelf:'center',
+    fontFamily:'PingFangSC-Regular',
+    fontWeight:'400'
   }
 });

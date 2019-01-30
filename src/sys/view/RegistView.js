@@ -12,7 +12,7 @@ export default class RegistView extends React.Component {
     password:'',
     passwordAgain:'',
     userName:'',
-    checked:false,
+    checked:true,
   }
 
   validateForm = () => {
@@ -20,7 +20,7 @@ export default class RegistView extends React.Component {
     if (Object.keys(this.state).some((key) => this.state[key] === '') || !checked){
       return false;
     }else{
-      if(password !== passwordAgain){
+     if(password !== passwordAgain){
         return false;
       }else{
         return true;
@@ -29,6 +29,17 @@ export default class RegistView extends React.Component {
   }
 
   handleNextStep = () => {
+    let {password,userName,mobile,email} = this.state;
+    if(!Regex.mobile.test(mobile)){
+      Mymessage.show('手机号格式不正确');
+      return false
+    }else if( !Regex.email.test(email)) {
+      Mymessage.show('邮箱格式不正确');
+      return false;
+    }else if(password.length > 12 || userName.length > 12 ){
+      Mymessage.show('用户名，密码不能超过12位');
+      return false;
+    }
     this.props.handleNextStep(this.state);
 
   }
@@ -63,14 +74,14 @@ export default class RegistView extends React.Component {
 
           <UIButton style={styles.button} disabled={!validateOk} text='下一步' onPress={this.handleNextStep} />
 
-          <View style={styles.row} >
+          {/* <View style={styles.row} >
             <UICheckBox
               label={this.props.label}
               onChange={(state)=>this.setState({checked:state})}
               checked={this.state.checked}
               checkboxStyle={{height:20,width:20}}/>
             <Text style={styles.plainText}>注册FPAY钱包表示同意FPAY<Text style={styles.clickText}>《服务协议》</Text></Text>
-          </View>
+          </View> */}
         </View>
       
     );

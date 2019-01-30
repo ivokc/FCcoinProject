@@ -30,9 +30,31 @@ export default class PayWayView extends PureComponent {
 
         this.state =  {
             language: '',
+            second:60
       };
     }
 
+    componentWillMount() {
+    }
+
+
+    startTimer = () => {
+      this.setState({second:600})
+      this.timer = setInterval(() => {
+        this.setState((state) => {
+          if(state.second == 0){
+            this.timer && clearInterval(this.timer);
+            return {
+              second:0
+            }
+          }else{
+            return {
+              second:state.second - 1
+            }
+          }
+        });
+      }, 1000);
+    }
 
     render() {
       const {BTDatas} = this.props;
@@ -42,6 +64,7 @@ export default class PayWayView extends PureComponent {
         return (
 
            <View style={styles.container}>
+
               <View style={styles.body}>
                   <View style={styles.ScrollableLayout}>
                     <View style={styles.listView}>
@@ -82,37 +105,41 @@ export default class PayWayView extends PureComponent {
 
 
 
-              {BTDatas.length>0?
+              {this.props.bankCard==true?
+                <View>
                 <View style={styles.ScrollableLayout2}>
-                  <View style={styles.listView}>
-                <Picker
-                 style={{width:350}}
-                 selectedValue={this.props.cardNumber}
-                 onValueChange={(value,itemIndex) => this.props.handleChoosePress(value,itemIndex)}>
-                 {
+                      <View style={styles.listView}>
+                          <Picker
+                           style={{width:350}}
+                           selectedValue={this.props.cardNumber}
+                           onValueChange={(value,itemIndex) => this.props.handleChoosePress(value,itemIndex)}>
+                           {
 
-                    BTDatas.map((item)=>  <Picker.Item label={item.label} value={item.value} key={item}/>)
-                }
+                              BTDatas.map((item)=>  <Picker.Item label={item.label} value={item.value} key={item}/>)
+                          }
 
-               </Picker>
+                         </Picker>
 
+                   </View>
                </View>
-
+               <View style={styles.bottomView3}>
+                 <View style={styles.buttonLayoutStyle}>
+                   <UIButton text='确认充值' style={styles.button}
+                   onPress={this.props.handleAgreePress}/>
+                 </View>
                </View>
-                :null
+               </View>
+                :
+                <View style={styles.bottomView4}>
+                  <Text style={styles.bottomText}>您还没有绑定银行卡，</Text>
+                  <TouchableOpacity activeOpacity={0.8} onPress={() => {
+                      this.props.handleBankPress();
+                  }}>
+                  <Text style={styles.bodyText2}>请先绑定</Text>
+                  </TouchableOpacity>
+                </View>
               }
 
-
-
-
-
-                      <View style={styles.bottomView3}>
-                              <View style={styles.buttonLayoutStyle}>
-                                          <UIButton text='确认充值' style={styles.button}
-                                          onPress={this.props.handleAgreePress}/>
-                              </View>
-
-                    </View>
                 </View>
 
 
@@ -185,6 +212,13 @@ const styles = StyleSheet.create({
 
     backgroundColor: '#FFFFFF'
   },
+  bottomView4:{
+    marginTop:20,
+      flexDirection: 'row',
+    backgroundColor: '#FFFFFF',
+    alignItems:'center',
+    justifyContent: 'center',
+  },
   body:{
     flex:1,
   },
@@ -232,7 +266,10 @@ const styles = StyleSheet.create({
     backgroundColor:'#726DFE',
     borderRadius: 23 ,
   },
-
+  bodyText2:{
+    fontSize: 16,
+    color:'#726DFE',
+  },
   buttonLayoutStyle: {
     flexDirection: 'row',
     width:  Constant.deviceWidth,

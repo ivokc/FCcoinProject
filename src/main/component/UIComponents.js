@@ -18,3 +18,4 @@ export { default as UILabelPicker} from './formItem/UILabelPicker';
 export { default as UIAcctItem} from './widget/UIAcctItem';
 export { default as UILoading} from './widget/UILoading';
 export { default as UIMessage} from './widget/UIMessage';
+export { default as UIDialog} from './widget/UIDialog';

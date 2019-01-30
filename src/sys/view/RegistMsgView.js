@@ -2,7 +2,7 @@ import React from "react";
 import { View,StyleSheet,Text} from "react-native";
 import {UIIconInput,UIButton} from '../../main/component/UIComponents'
 
-
+@CommonHead('')
 @AutoHideKeyboard
 export default class RegistMsgView extends React.Component {
 
@@ -15,6 +15,11 @@ export default class RegistMsgView extends React.Component {
 
   handleUserRegister = () => {
     this.props.handleUserRegister(this.state);
+
+  }
+  handleSms = () => {
+    
+    this.props.handleSms(this.props.navigation.state.params);
   }
 
   validateForm = () => {
@@ -36,7 +41,7 @@ export default class RegistMsgView extends React.Component {
           </Text>
           <View style={styles.underline} />
           <View style={{marginTop:60}} >
-            <UIIconInput action='sms' icon='mail' placeholder='请输入短信校验码'
+            <UIIconInput action='sms' icon='mail' placeholder='请输入短信校验码' handleActionPress={this.handleSms}
               onChangeText={(text) => this.setState({smsCode:text})}
             />
           </View>

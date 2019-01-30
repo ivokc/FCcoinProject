@@ -11,7 +11,7 @@ const handleLogout = ({params,dispatch}) => {
 const handleHomeInit = async ({params,dispatch}) => {
   try {
     let result = await getCaptialAccountIntf({sessionId});
-    dispatch(getCaptialAccountAction(result));
+    dispatch(getCaptialAccountAction(result.data));
     console.log('handleHomeInit',result);
     
   } catch (error) {

@@ -21,7 +21,7 @@ const defaultState = {
 
 };
 
-@CommonHead('',true)
+@CommonHead('')
 @AutoHideKeyboard
 class PayResultContainer extends PureComponent {
 

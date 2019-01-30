@@ -40,12 +40,14 @@ class PayDetailContainer extends PureComponent {
 
 
 
+
     render() {
       // console.log('33333333333',this.state.BTDatas)
 
         return (
             <PayDetailView
               navigation={this.props.navigation}
+
               />
         );
     }

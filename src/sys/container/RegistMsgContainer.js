@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import RegistMsgView from '../view/RegistMsgView';
-import {userRegisterIntf} from '../vendor/Intf';
+import {userRegisterIntf,sendSmsIntf} from '../vendor/Intf';
 
 
 const handleUserRegister = async ({params,dispatch,ownProps}) => {
@@ -11,13 +11,23 @@ const handleUserRegister = async ({params,dispatch,ownProps}) => {
 
     let result = await userRegisterIntf(registerInfo);
     console.log('handleUserRegister',result);
-    
+    Mymessage.show('注册成功');
+    ownProps.navigation.navigate('Login');
   }catch(error){
     console.log('handleUserRegister|error',error);
 
   }
 }
 
+const handleSms = async ({params,dispatch,ownProps}) => {
+  try {
+    await sendSmsIntf({...params});
+    
+  }catch(error){
+    console.log('handleUserRegister|error',error);
+
+  }
+}
 
 const mapStateToProps = (state) => {
 
@@ -29,7 +39,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch,ownProps) => {
 
   return {
-    handleUserRegister: (params) => handleUserRegister({params,dispatch,ownProps})
+    handleUserRegister: (params) => handleUserRegister({params,dispatch,ownProps}),
+    handleSms: (params) => handleSms({params,dispatch,ownProps})
   }
 };
 
