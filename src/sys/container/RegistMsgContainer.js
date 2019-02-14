@@ -10,11 +10,11 @@ const handleUserRegister = async ({params,dispatch,ownProps}) => {
     let registerInfo = {...ownProps.navigation.state.params,...params,password:encriptedPassword};
 
     let result = await userRegisterIntf(registerInfo);
-    console.log('handleUserRegister',result);
+    //('handleUserRegister',result);
     Mymessage.show('注册成功');
     ownProps.navigation.navigate('Login');
   }catch(error){
-    console.log('handleUserRegister|error',error);
+    //('handleUserRegister|error',error);
 
   }
 }
@@ -24,7 +24,7 @@ const handleSms = async ({params,dispatch,ownProps}) => {
     await sendSmsIntf({...params});
     
   }catch(error){
-    console.log('handleUserRegister|error',error);
+    //('handleUserRegister|error',error);
 
   }
 }

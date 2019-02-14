@@ -6,12 +6,12 @@ async function changePWDTask(params) {
     let newpassword = Just.encode(params.newpassword,Constant.encryptKey);
   
     let result = await changePWDIntf({...params,password,newpassword});
-    console.log('changePWDTask',result);
+    //('changePWDTask',result);
     if(result.result === 'false'){
       throw new Error(result)
     }
   }catch(error){
-    console.log('changePWDTaskError',error);
+    //('changePWDTaskError',error);
     return Promise.reject(error);
   }
   

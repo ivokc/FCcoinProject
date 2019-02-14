@@ -22,7 +22,7 @@ export default class UserAddBankAcctView extends React.Component {
      let {sessionId} = this.props;
     try {
       let result = await getBankSelectDataListIntf({sessionId});
-      console.log('userAddBankAcctInit',result);
+      //('userAddBankAcctInit',result);
 
       pickerData = Object.keys(result.data).map((ele) => {
         return {
@@ -35,7 +35,7 @@ export default class UserAddBankAcctView extends React.Component {
         pickerData
       });
     } catch (error) {
-      console.log('userAddBankAcctIniterror',error);
+      //('userAddBankAcctIniterror',error);
     }
     
   }

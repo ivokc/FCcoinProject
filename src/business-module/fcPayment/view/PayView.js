@@ -41,7 +41,7 @@ export default class PayView extends PureComponent {
 
     render() {
               const {data} = this.props.navigation.state.params;
-      // console.log('2222222222222222',this.props)
+      // //('2222222222222222',this.props)
 
         return (
 

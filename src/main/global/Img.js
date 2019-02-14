@@ -23,7 +23,6 @@ global.Img = {
   CheckBoxUnCheckedImage:require('../../img/CheckBoxUnCheckedImage.png'),
 
   // Splash:require('../../img/Splash.png'),
-  Help:require('../../img/Help.png'),
   Help1:require('../../img/Help1.png'),
   Help2:require('../../img/Help2.png'),
 

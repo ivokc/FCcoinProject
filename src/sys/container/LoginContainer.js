@@ -8,7 +8,7 @@ const handleLogin = async ({params,dispatch,ownProps}) => {
     await loginTask(params,dispatch);
     ownProps.navigation.navigate('App');
   }catch(error){
-    console.log('handleLoginfffff',error);
+    //('handleLoginfffff',error);
     
   }
 }

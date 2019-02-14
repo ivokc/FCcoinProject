@@ -37,7 +37,7 @@ export default class PayListView extends PureComponent {
 
     renderList() {
         const {BTDatas,btStatus} = this.props;
-        // console.log('2222222222222222',this.props)
+        // //('2222222222222222',this.props)
           var ticketDataViews = [];
       for(var i = 0; i < BTDatas.length; i++){
 
@@ -60,7 +60,7 @@ export default class PayListView extends PureComponent {
     }
 
     render() {
-      // console.log('2222222222222222',this.props)
+      // //('2222222222222222',this.props)
 
         return (
 

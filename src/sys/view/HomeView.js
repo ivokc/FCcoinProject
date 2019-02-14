@@ -8,14 +8,14 @@ export default class HomeView extends React.Component {
 
   handleScan = async () => {
     let aaa = await Just.scanQRcode();
-    console.log('qrcodeadfaf | aaa',aaa);
+    //('qrcodeadfaf | aaa',aaa);
     this.props.navigation.navigate('PayQRCode',{
       qrcode:aaa
     });
   }
  
   componentWillMount(){
-    console.log('handleHomeInit');
+    //('handleHomeInit');
     this.props.handleHomeInit();
     this.didBlurSubscription = this.props.navigation.addListener(
       'willFocus',
@@ -29,7 +29,7 @@ export default class HomeView extends React.Component {
   }
 
   render() {
-    console.log('handleHomeInit | capAcct',this.props.capAcct);
+    //('handleHomeInit | capAcct',this.props.capAcct);
   
 
     return (

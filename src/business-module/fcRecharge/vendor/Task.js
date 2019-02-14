@@ -1,6 +1,6 @@
 
 export function getBankDatasTask(sid) {
-      // console.log('getRechargeOrderIntf~~33333333333333333333333');
+      // //('getRechargeOrderIntf~~33333333333333333333333');
   const params = {
     __ajax:'json',
     __sid:sid//sid
@@ -16,13 +16,13 @@ export function creatRechargeOrderTask(sid,orderNum,cardCode) {
     __ajax:'json',
     __sid:sid//sid
   };
-  console.log('creatRechargeOrderTask~~33333333333333333333333',params);
+  //('creatRechargeOrderTask~~33333333333333333333333',params);
   return Just.getRequest('/js/a/api/creatRechargeOrder',params);
 }
 
 
 export function creatPaymentOrderTask(sid,orderNum,merchantOrderCode) {
-      // console.log('getRechargeOrderIntf~~33333333333333333333333');
+      // //('getRechargeOrderIntf~~33333333333333333333333');
   const params = {
      orderNum:orderNum,
      merchantOrderCode:merchantOrderCode,
@@ -34,7 +34,7 @@ export function creatPaymentOrderTask(sid,orderNum,merchantOrderCode) {
 
 
 export function rechargeTask(sid,orderCode) {
-      console.log('rechargeTask~~33333333333333333333333',orderCode);
+      //('rechargeTask~~33333333333333333333333',orderCode);
   const params = {
      orderCode:orderCode,
     __ajax:'json',
@@ -45,7 +45,7 @@ export function rechargeTask(sid,orderCode) {
 
 
 export function paymentTask(sid,orderCode) {
-      console.log('paymentTask~~33333333333333333333333',orderCode);
+      //('paymentTask~~33333333333333333333333',orderCode);
   const params = {
      orderCode:orderCode,
     __ajax:'json',

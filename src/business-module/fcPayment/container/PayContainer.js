@@ -30,7 +30,7 @@ class PayContainer extends PureComponent {
     }
     componentWillMount(){
       // this.handleReadyPress()
-         // console.log('~~~~~~~pullLoad~~~~~~~')
+         // //('~~~~~~~pullLoad~~~~~~~')
            this.startTimer()
     }
 
@@ -64,7 +64,7 @@ class PayContainer extends PureComponent {
 
                 rechargeTask(this.props.sessionId,this.props.navigation.state.params.data.orderCode).then((response) =>{
 
-                    console.log('~~~~~~~rechargeTask~~~~~~~',response)
+                    //('~~~~~~~rechargeTask~~~~~~~',response)
                     clearInterval(this.timer);
 
                      // Mymessage.show(response.message)
@@ -90,7 +90,7 @@ class PayContainer extends PureComponent {
                   // Just.dismissLoading();
                   // Just.ErrorHandler(error,() => { this.handleLogin() });/
                    Mymessage.show(error)
-                  console.log('~~~~~~~error~~~~~~~',error)
+                  //('~~~~~~~error~~~~~~~',error)
                });
       }
 
@@ -99,7 +99,7 @@ class PayContainer extends PureComponent {
       }
 
     render() {
-      // console.log('33333333333',this.state.BTDatas)
+      // //('33333333333',this.state.BTDatas)
 
         return (
             <PayView
@@ -115,7 +115,7 @@ class PayContainer extends PureComponent {
 PayContainer.defaultProps = defaultProps;
 
 function mapStateToProps(state) {
-    // console.log('111',loginReducer);
+    // //('111',loginReducer);
     return {
       sessionId:state.userReducer.sessionid
 

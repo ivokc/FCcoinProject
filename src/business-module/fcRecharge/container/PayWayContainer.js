@@ -36,7 +36,7 @@ class PayWayContainer extends PureComponent {
     }
     componentWillMount(){
         this.getList()
-         // console.log('~~~~~~~pullLoad~~~~~~~')
+         // //('~~~~~~~pullLoad~~~~~~~')
                  // Mymessage.show('11111111111')
     }
 
@@ -49,7 +49,7 @@ class PayWayContainer extends PureComponent {
 
        getBankDatasTask(this.props.sessionId).then((response) =>{
 
-           console.log('~~~~~~~getBankDatasTask~~~~~~~',response.data.list)
+           //('~~~~~~~getBankDatasTask~~~~~~~',response.data.list)
 
            let tempBTDatas=[]
            let BTData={}
@@ -83,21 +83,21 @@ class PayWayContainer extends PureComponent {
          // Just.dismissLoading();
          // Just.ErrorHandler(error,() => { this.handleLogin() });/
          Mymessage.show(error)
-         console.log('~~~~~~~error~~~~~~~',error)
+         //('~~~~~~~error~~~~~~~',error)
       });
 
      }
 
      handleChoosePress=(value,itemIndex)=>{
-       // console.log('~~~~~~~value~~~~~~~',value)
-       //        console.log('~~~~~~~itemIndex~~~~~~~',itemIndex)
-       //          console.log('~~~~~~~itemIndex~~~~~~~',this.state.cardNumbers[itemIndex])
-       //  console.log('~~~~~~~itemIndex~~~~~~~',this.state.cardCode[itemIndex])
+       // //('~~~~~~~value~~~~~~~',value)
+       //        //('~~~~~~~itemIndex~~~~~~~',itemIndex)
+       //          //('~~~~~~~itemIndex~~~~~~~',this.state.cardNumbers[itemIndex])
+       //  //('~~~~~~~itemIndex~~~~~~~',this.state.cardCode[itemIndex])
         this.setState({cardNumber:this.state.cardCode[itemIndex]})
      }
 
      fcInput=(value)=>{
-       console.log('~~~~~~~value~~~~~~~',value)
+       //('~~~~~~~value~~~~~~~',value)
          this.setState({total:value})
 
      }
@@ -107,8 +107,8 @@ class PayWayContainer extends PureComponent {
      }
 
      handleAgreePress=()=>{
-        console.log('~~~~~~~44444444444444~~~~~~~')
-        console.log('~~~~~~~value~~~~~~~',Regex.intege1.test(this.state.total))
+        //('~~~~~~~44444444444444~~~~~~~')
+        //('~~~~~~~value~~~~~~~',Regex.intege1.test(this.state.total))
         if(Regex.intege1.test(this.state.total)){
             if(this.state.total<100){
                Mymessage.show('充值最小为100')
@@ -117,7 +117,7 @@ class PayWayContainer extends PureComponent {
 
                 creatRechargeOrderTask(this.props.sessionId,this.state.total,this.state.cardNumber).then((response) =>{
 
-                    console.log('~~~~~~~creatRechargeOrderTask~~~~~~~',response)
+                    //('~~~~~~~creatRechargeOrderTask~~~~~~~',response)
                     if(response.result=='false'||response.result==false){
                        throw new Error(response.message)
                     }else {
@@ -140,7 +140,7 @@ class PayWayContainer extends PureComponent {
                   // Just.dismissLoading();
                   // Just.ErrorHandler(error,() => { this.handleLogin() });/
                    Mymessage.show(error)
-                  console.log('~~~~~~~error~~~~~~~',error.message)
+                  //('~~~~~~~error~~~~~~~',error.message)
                });
           }else {
              Mymessage.show('充值FC数量不正确')
@@ -149,7 +149,7 @@ class PayWayContainer extends PureComponent {
      }
 
     render() {
-      // console.log('33333333333',this.state.BTDatas)
+      // //('33333333333',this.state.BTDatas)
 
         return (
             <PayWayView
@@ -170,7 +170,7 @@ class PayWayContainer extends PureComponent {
 PayWayContainer.defaultProps = defaultProps;
 
 function mapStateToProps(state) {
-    // console.log('111',loginReducer);
+    // //('111',loginReducer);
     return {
       sessionId:state.userReducer.sessionid
 

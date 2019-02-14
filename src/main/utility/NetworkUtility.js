@@ -13,7 +13,7 @@ const NetworkUtility = {
           url += '&' + paramsArray.join('&')  
       }  
     }  
-    console.log('getRequest----url',url);
+    //('getRequest----url',url);
     return Promise.race([
       fetch(Constant.baseURL + url),
       new Promise(function (resolve, reject) {
@@ -23,7 +23,7 @@ const NetworkUtility = {
       Myloading.hide();
 
       let bodyText = JSON.parse(response._bodyText)
-      console.log('getRequest----response',response);
+      // console.log('getRequest----response',response);
       if (response.status === 200) {
         if (bodyText.result === 'login') {
           //session超时
@@ -31,23 +31,23 @@ const NetworkUtility = {
           return Promise.reject('session超时');
         }else if (bodyText.result !== 'true') {
           //普通错误
-         console.log('getRequest----bodyText.message',bodyText.message);
+        //  console.log('getRequest----bodyText.message',bodyText.message);
           Mymessage.show(bodyText.message);
           return Promise.reject(bodyText.message);
         }
         return Promise.resolve(bodyText);
       }else {
-        console.log('getRequest----error',bodyText.message);
+        //('getRequest----error',bodyText.message);
         return Promise.reject(response._bodyText.message);
       }
     },(error) => {
       Myloading.hide();
-      console.log('getRequest111----error',error.message);
+      //('getRequest111----error',error.message);
       return Promise.reject(error);
     });
   },
   async postRequest(url, params = {}) {
-    console.log('postRequest----params',params);
+    //('postRequest----params',params);
     return fetch(Constant.baseURL + url, {
       method: "POST",
       headers: {
@@ -55,10 +55,10 @@ const NetworkUtility = {
       },
       body: JSON.stringify(params)
     }).then((response)=> {
-      console.log('postRequest----response',response);
+      //('postRequest----response',response);
       return Promise.resolve(response);
     },(error) => {
-      console.log('postRequest----error',error);
+      //('postRequest----error',error);
       return Promise.reject(error);
     });
   },

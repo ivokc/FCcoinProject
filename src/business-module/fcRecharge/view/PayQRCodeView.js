@@ -36,9 +36,9 @@ export default class PayQRCodeView extends PureComponent {
 
     render() {
       const {BTDatas} = this.props;
-      // console.log('2222222222222222',this.props)
+      // //('2222222222222222',this.props)
       // const Array=[{label:'1',value:'1'},{label:'2',value:'2'}]
-      // console.log('2222222222222222',BTDatas)
+      // //('2222222222222222',BTDatas)
         return (
 
            <View style={styles.container}>

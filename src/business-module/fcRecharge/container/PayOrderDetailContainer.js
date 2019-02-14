@@ -31,7 +31,7 @@ class PayOrderDetailContainer extends PureComponent {
     }
     componentWillMount(){
       // this.handleReadyPress()
-         // console.log('~~~~~~~pullLoad~~~~~~~')
+         // //('~~~~~~~pullLoad~~~~~~~')
     }
 
     componentDidMount() {
@@ -39,10 +39,10 @@ class PayOrderDetailContainer extends PureComponent {
      }
 
      handleAgreePress=()=>{
-        console.log('~~~~~~~44444444444444~~~~~~~')
+        //('~~~~~~~44444444444444~~~~~~~')
        paymentTask(this.props.sessionId,this.props.navigation.state.params.orderCode).then((response) =>{
 
-           console.log('~~~~~~~paymentTask~~~~~~~',response)
+           //('~~~~~~~paymentTask~~~~~~~',response)
 
            if(response.result=='true'){
 
@@ -54,13 +54,13 @@ class PayOrderDetailContainer extends PureComponent {
        }).catch((error) => {
          // Just.dismissLoading();
          // Just.ErrorHandler(error,() => { this.handleLogin() });/
-         console.log('~~~~~~~error~~~~~~~',error)
+         //('~~~~~~~error~~~~~~~',error)
       });
      }
 
 
     render() {
-      // console.log('33333333333',this.state.BTDatas)
+      // //('33333333333',this.state.BTDatas)
 
         return (
             <PayOrderDetailView
@@ -74,7 +74,7 @@ class PayOrderDetailContainer extends PureComponent {
 PayOrderDetailContainer.defaultProps = defaultProps;
 
 function mapStateToProps(state) {
-    // console.log('111',loginReducer);
+    // //('111',loginReducer);
     return {
       sessionId:state.userReducer.sessionid
 

@@ -9,9 +9,9 @@ const userAddBankAcctInit = async ({params,dispatch,ownProps}) => {
   try {
     let result = await getBankSelectDataListIntf({sessionId});
     dispatch(getBankSelectDataListAction(result.data))
-    console.log('userAddBankAcctInit',bankSelectList);
+    //('userAddBankAcctInit',bankSelectList);
   } catch (error) {
-    console.log('userAddBankAcctIniterror',error);
+    //('userAddBankAcctIniterror',error);
     
   }
   
@@ -25,7 +25,7 @@ const handleAddBankDatas = async ({params,dispatch,ownProps}) => {
     }
     ownProps.navigation.navigate('Home');
   } catch (error) {
-    console.log('userAddBankAcctIniterror',error);
+    //('userAddBankAcctIniterror',error);
     
   }
 }
@@ -34,7 +34,7 @@ const handleAddBankDatas = async ({params,dispatch,ownProps}) => {
 const mapStateToProps = (state,ownProps) => {
 
   sessionId = state.userReducer ? state.userReducer.sessionid : 1;
-  console.log('userBankAcctsessionId',state.userReducer);
+  //('userBankAcctsessionId',state.userReducer);
   return {
     sessionId:state.userReducer ? state.userReducer.sessionid : 1,
     bankSelectList: state.bankAcctReducer.bankSelect,

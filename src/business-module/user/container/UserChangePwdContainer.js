@@ -9,7 +9,7 @@ const handleChangePWD = async ({params,dispatch,ownProps}) => {
     await changePWDTask({...params,sessionId});
     ownProps.navigation.navigate('Home');
   }catch(error){
-    console.log('handleLoginfffff',error);
+    //('handleLoginfffff',error);
     
   }
 }

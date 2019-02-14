@@ -15,29 +15,29 @@ const userBankAcctInit = async ({params,dispatch,ownProps}) => {
 const handleDisableBankData = async ({params,dispatch,ownProps}) => {
   try {
     let result = await disableBankDataIntf({...params,sessionId});
-    console.log('userBankAcctInit',result);
+    //('userBankAcctInit',result);
     userBankAcctInit({dispatch});
   } catch (error) {
-    console.log('userBankAcctIniterror',error);
+    //('userBankAcctIniterror',error);
   }
 }
 const handleEnableBankData = async ({params,dispatch,ownProps}) => {
   try {
     let result = await enableBankDataIntf({...params,sessionId});
-    console.log('userBankAcctInit',result);
+    //('userBankAcctInit',result);
     userBankAcctInit({dispatch});
   } catch (error) {
-    console.log('userBankAcctIniterror',error);
+    //('userBankAcctIniterror',error);
   }
 }
 const handleDeleteBankDatas = async ({params,dispatch,ownProps}) => {
   try {
-    console.log('deleteBankDatasIntf',params);
+    //('deleteBankDatasIntf',params);
     let result = await deleteBankDatasIntf({...params,sessionId});
     userBankAcctInit({dispatch});
-    console.log('deleteBankDatasIntf',result);
+    //('deleteBankDatasIntf',result);
   } catch (error) {
-    console.log('deleteBankDatasIntf',error);
+    //('deleteBankDatasIntf',error);
   }
 }
 
@@ -46,7 +46,7 @@ const handleDeleteBankDatas = async ({params,dispatch,ownProps}) => {
 const mapStateToProps = (state,ownProps) => {
 
   sessionId = state.userReducer ? state.userReducer.sessionid : 1;
-  console.log('userBankAcctsessionId',state.bankAcctReducer);
+  //('userBankAcctsessionId',state.bankAcctReducer);
   return {
     bankAcct: state.bankAcctReducer.bankAcct,
   };

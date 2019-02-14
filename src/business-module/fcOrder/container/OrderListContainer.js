@@ -54,7 +54,7 @@ class OrderListContainer extends PureComponent {
 
        getPaymentOrdersTask(this.props.sessionId).then((response) =>{
 
-           console.log('~~~~~~~OrderListContainer~~~~~~~',response.data.list.length)
+           //('~~~~~~~OrderListContainer~~~~~~~',response.data.list.length)
 
            let tempBTDatas=[]
            let BTData={}
@@ -98,7 +98,7 @@ class OrderListContainer extends PureComponent {
        }).catch((error) => {
          // Just.dismissLoading();
          // Just.ErrorHandler(error,() => { this.handleLogin() });/
-         console.log('~~~~~~~error~~~~~~~',error)
+         //('~~~~~~~error~~~~~~~',error)
       });
 
      }
@@ -106,7 +106,7 @@ class OrderListContainer extends PureComponent {
 
           //下拉刷新
           onRefresh = () =>{
-            // console.log('3333333333333')
+            // //('3333333333333')
 
               setTimeout(() =>{
 
@@ -118,7 +118,7 @@ class OrderListContainer extends PureComponent {
 
 
     render() {
-      // console.log('33333333333',this.state.BTDatas)
+      // //('33333333333',this.state.BTDatas)
 
         return (
             <OrderListView

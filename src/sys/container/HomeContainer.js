@@ -12,10 +12,10 @@ const handleHomeInit = async ({params,dispatch}) => {
   try {
     let result = await getCaptialAccountIntf({sessionId});
     dispatch(getCaptialAccountAction(result.data));
-    console.log('handleHomeInit',result);
+    //('handleHomeInit',result);
     
   } catch (error) {
-    console.log('handleHomeIniterror',error);
+    //('handleHomeIniterror',error);
     
   }
 }

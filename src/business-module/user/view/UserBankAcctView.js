@@ -35,7 +35,7 @@ export default class UserBankAcctView extends React.Component {
 
             <UIAcctItem key={index} bankName={acct.bankName} 
               acctType={acct.cardUserName} 
-              acctNo={acct.cardCode}
+              acctNo={acct.cardNumber}
               acctStatus={acct.status}
               onToggleStatePress={this.handleToggleState}
               onDeletePress={this.handleDeleteBankDatas}

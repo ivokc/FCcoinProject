@@ -15,3 +15,19 @@ global.Constant = {
 
 
 }
+/*
+  小技巧
+  发布时屏蔽掉所有的console.*调用。
+  React Native 中有一个全局变量__DEV__用于指示当前运行环境是否是开发环境。
+  我们可以据此在正式环境中替换掉系统原先的 console 实现。
+*/
+
+if (!__DEV__) {
+  global.console = {
+    info: () => {},
+    log: () => {},
+    warn: () => {},
+    debug: () => {},
+    error: () => {}
+  };
+}

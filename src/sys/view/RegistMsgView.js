@@ -31,7 +31,7 @@ export default class RegistMsgView extends React.Component {
   }
   render() {
     let params = this.props.navigation.state.params;
-    console.log('RegistMsgView',params);
+    //('RegistMsgView',params);
     let validateOk = this.validateForm();
     
     return (

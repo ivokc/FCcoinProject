@@ -46,7 +46,7 @@ export default class RegistView extends React.Component {
 
   render() {
     let validateOk = this.validateForm();
-    console.log('RegistView|validateOk',validateOk);
+    //('RegistView|validateOk',validateOk);
     
     return (
         <View style={styles.container}>

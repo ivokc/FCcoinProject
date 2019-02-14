@@ -17,7 +17,7 @@ export default class UITextInput extends React.Component {
   }
 
   render() {
-    console.log('23423423423',this.props.textInputstyles);
+    //('23423423423',this.props.textInputstyles);
 
     return (
 

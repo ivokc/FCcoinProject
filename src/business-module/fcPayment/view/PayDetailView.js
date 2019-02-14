@@ -34,7 +34,7 @@ export default class PayDetailView extends PureComponent {
 
     render() {
         const {data,statusShow} = this.props.navigation.state.params;
-      console.log('2222222222222222',data)
+      //('2222222222222222',data)
 
         return (
 

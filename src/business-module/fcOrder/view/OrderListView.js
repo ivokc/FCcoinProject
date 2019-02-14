@@ -36,7 +36,7 @@ export default class OrderListView extends PureComponent {
 
     renderList() {
         const {BTDatas} = this.props;
-        // console.log('2222222222222222',this.props)
+        // //('2222222222222222',this.props)
           var ticketDataViews = [];
       for(var i = 0; i < BTDatas.length; i++){
 
@@ -58,7 +58,7 @@ export default class OrderListView extends PureComponent {
     }
 
     render() {
-      // console.log('2222222222222222',this.props)
+      // //('2222222222222222',this.props)
 
         return (
 

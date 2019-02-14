@@ -34,7 +34,7 @@ class PayResultContainer extends PureComponent {
     }
     componentWillMount(){
       // this.handleReadyPress()
-         // console.log('~~~~~~~pullLoad~~~~~~~')
+         // //('~~~~~~~pullLoad~~~~~~~')
     }
 
     componentDidMount() {
@@ -43,7 +43,7 @@ class PayResultContainer extends PureComponent {
 
 
      handleAgreePress=()=>{
-        // console.log('~~~~~~~44444444444444~~~~~~~')
+        // //('~~~~~~~44444444444444~~~~~~~')
 
 
              this.props.navigation.navigate('Home');
@@ -51,14 +51,14 @@ class PayResultContainer extends PureComponent {
      }
 
     handlePress=()=>{
-       // console.log('~~~~~~~44444444444444~~~~~~~')
+       // //('~~~~~~~44444444444444~~~~~~~')
 
             this.props.navigation.navigate('PayWay');
 
     }
 
     render() {
-      // console.log('33333333333',this.state.BTDatas)
+      // //('33333333333',this.state.BTDatas)
 
         return (
             <PayResultView
@@ -75,7 +75,7 @@ PayResultContainer.defaultProps = defaultProps;
 
 function mapStateToProps(state) {
     const { loginReducer} = state;
-    // console.log('111',loginReducer);
+    // //('111',loginReducer);
     return {
       loginReducer:loginReducer,
     };

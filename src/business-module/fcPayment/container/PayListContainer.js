@@ -41,7 +41,7 @@ class PayListContainer extends PureComponent {
     }
     componentWillMount(){
       this.getList()
-         // console.log('~~~~~~~pullLoad~~~~~~~')
+         // //('~~~~~~~pullLoad~~~~~~~')
     }
 
     componentDidMount() {
@@ -53,7 +53,7 @@ class PayListContainer extends PureComponent {
 
        getRechargeOrderTask(this.props.sessionId).then((response) =>{
 
-           console.log('~~~~~~~getRechargeOrderTask~~~~~~~',response.data.list[0])
+           //('~~~~~~~getRechargeOrderTask~~~~~~~',response.data.list[0])
 
            let tempBTDatas=[]
            let BTData={}
@@ -101,15 +101,15 @@ class PayListContainer extends PureComponent {
          // Just.dismissLoading();
          // Just.ErrorHandler(error,() => { this.handleLogin() });/
             Mymessage.show(error)
-         console.log('~~~~~~~error~~~~~~~',error)
+         //('~~~~~~~error~~~~~~~',error)
       });
 
      }
 
      handleChoosePress = (pickedData) => {
-      console.log('4444',pickedData.data);
+      //('4444',pickedData.data);
 
-        console.log('444444444444444',pickedData.data.payeeFpUser.qq);
+        //('444444444444444',pickedData.data.payeeFpUser.qq);
         Constant.qqNum = pickedData.data.payeeFpUser.qq
         if(pickedData.status=='0'){
           //跳待支付
@@ -133,7 +133,7 @@ class PayListContainer extends PureComponent {
 
     //下拉刷新
     onRefresh = () =>{
-      // console.log('3333333333333')
+      // //('3333333333333')
 
         setTimeout(() =>{
 
@@ -143,7 +143,7 @@ class PayListContainer extends PureComponent {
 
     }
     render() {
-      // console.log('33333333333',this.state.BTDatas)
+      // //('33333333333',this.state.BTDatas)
 
         return (
             <PayListView
@@ -159,7 +159,7 @@ class PayListContainer extends PureComponent {
 PayListContainer.defaultProps = defaultProps;
 
 function mapStateToProps(state) {
-    // console.log('111',loginReducer);
+    // //('111',loginReducer);
     return {
       sessionId:state.userReducer ?state.userReducer.sessionid : 1
 

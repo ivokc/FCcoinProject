@@ -4,7 +4,7 @@ import {StyleSheet,Text,View,ImageBackground,TouchableWithoutFeedback} from "rea
 export default class UIAcctItem extends React.Component {
   render() {
     var randomNum = Just.randomNum(0,1);
-    console.log('randomNum',randomNum);
+    //('randomNum',randomNum);
    
     return (
       <ImageBackground style={styles.container} source={randomNum == 0 ? Img.BankCardBg1 : Img.BankCardBg2} >

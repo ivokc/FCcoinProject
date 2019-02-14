@@ -18,7 +18,7 @@ function loginIntf({username,password}) {
 * 登录接口
 */
 function getRechargeOrderIntf() {
-      console.log('getRechargeOrderIntf~~33333333333333333333333');
+      //('getRechargeOrderIntf~~33333333333333333333333');
   const params = {
     __ajax:'json',
     __sid:'87c86e3c03044444adeea77494092ab1'

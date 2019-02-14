@@ -3,22 +3,22 @@ import {loginAction} from './dataflow/Action';
 
 async function loginTask(params,dispatch) {
   try{
-    console.log('loginTaskparams',params);
+    //('loginTaskparams',params);
     let password = Just.encode(params.password,Constant.encryptKey);
     let username = Just.encode(params.username,Constant.encryptKey);
   
     let userInfo = await loginIntf({username,password});
-    console.log('loginTaskuserInfomessage',userInfo.message);
+    //('loginTaskuserInfomessage',userInfo.message);
     
     if (userInfo.result === 'false') {
       throw new Error(userInfo.message);
     }
-    console.log('loginTaskuserInfo',userInfo);
+    //('loginTaskuserInfo',userInfo);
     Just.storeData('userInfo',userInfo);
     dispatch(loginAction(userInfo));
     
   }catch(error){
-    console.log('loginTaskuserError',error);
+    //('loginTaskuserError',error);
     return Promise.reject(error);
   }
 }
@@ -26,37 +26,37 @@ async function loginTask(params,dispatch) {
 async function logoutTask(params){
   try {
     let result = await logoutIntf(params);
-    console.log('logoutTaskresult',result);
+    //('logoutTaskresult',result);
     if (result.result !== 'true') {
       throw new Error(result.message);
     }
     Just.clearAuthData();
   } catch (error) {
-    console.log('logoutTaskError',error);
+    //('logoutTaskError',error);
     return Promise.reject(error);
   }
 }
 async function sendSmsTask(params){
   try {
     let result = await sendSmsIntf(params);
-    console.log('logoutTaskresult',result);
+    //('logoutTaskresult',result);
     if (result.result !== 'true') {
       throw new Error(result.message);
     }
   } catch (error) {
-    console.log('logoutTaskError',error);
+    //('logoutTaskError',error);
     return Promise.reject(error);
   }
 }
 async function getCaptialAccountTask(params){
   try {
     let result = await sendSmsIntf(params);
-    console.log('getCaptialAccountTask',result);
+    //('getCaptialAccountTask',result);
     if (result.result !== 'true') {
       throw new Error(result.message);
     }
   } catch (error) {
-    console.log('logoutTaskError',error);
+    //('logoutTaskError',error);
     return Promise.reject(error);
   }
 }

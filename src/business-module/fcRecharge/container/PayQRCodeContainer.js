@@ -44,12 +44,12 @@ class PayQRCodeContainer extends PureComponent {
 
 
      fcInput=(value)=>{
-       console.log('~~~~~~~value~~~~~~~',value)
+       //('~~~~~~~value~~~~~~~',value)
        this.setState({total:value})
      }
 
      handleAgreePress=()=>{
-        // console.log('~~~~~~~44444444444444~~~~~~~')
+        // //('~~~~~~~44444444444444~~~~~~~')
           if(Regex.intege1.test(this.state.total)){
 
             if(this.state.total<100){
@@ -61,7 +61,7 @@ class PayQRCodeContainer extends PureComponent {
               // let qrcode = this.state.merchantOrderCode
             creatPaymentOrderTask(this.props.sessionId,this.state.total,qrcode).then((response) =>{
 
-                console.log('~~~~~~~creatPaymentOrderTask~~~~~~~',response)
+                //('~~~~~~~creatPaymentOrderTask~~~~~~~',response)
 
 
                 if(response.result=='false'||response.result==false){
@@ -85,7 +85,7 @@ class PayQRCodeContainer extends PureComponent {
               // Just.dismissLoading();
               // Just.ErrorHandler(error,() => { this.handleLogin() });/
                Mymessage.show(error)
-              console.log('~~~~~~~error~~~~~~~',error)
+              //('~~~~~~~error~~~~~~~',error)
            });
           }else {
              Mymessage.show('充值金额不正确')
@@ -94,7 +94,7 @@ class PayQRCodeContainer extends PureComponent {
      }
 
     render() {
-      // console.log('33333333333',this.state.BTDatas)
+      // //('33333333333',this.state.BTDatas)
 
         return (
             <PayQRCodeView
@@ -112,7 +112,7 @@ class PayQRCodeContainer extends PureComponent {
 PayQRCodeContainer.defaultProps = defaultProps;
 
 function mapStateToProps(state) {
-    // console.log('111',loginReducer);
+    // //('111',loginReducer);
     return {
       sessionId:state.userReducer.sessionid
 
