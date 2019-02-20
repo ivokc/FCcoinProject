@@ -22,7 +22,7 @@ export default (title,kefu) => (WrappedComponent) => {
       // marginLeft:-10
     },
     headerBackImage: <Icon name='ios-arrow-back' size={30} color="#444444" />,
-    
+    headerBackTitle:null,
     headerRight: kefu ? (
       <TouchableWithoutFeedback onPress={()=>Just.linking()}>
         <Image source={Img.kefu} style={{width: 30, height: 30,marginRight:10}}/>

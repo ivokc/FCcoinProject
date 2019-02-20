@@ -52,6 +52,21 @@ function sendSmsIntf({mobile}) {
 }
 
 /*
+* 忘记密码
+*/
+function forgetPWDIntf({mobile,password,smsCode}) {
+  const params = {
+    mobile,
+    password,
+    smsCode,
+    __ajax:'json',
+  };
+  return Just.getRequest(Url.forgetPWD,params);
+
+}
+
+
+/*
 * 获取首页信息
 */
 function getCaptialAccountIntf({sessionId}) {
@@ -68,5 +83,6 @@ export {
   logoutIntf,
   userRegisterIntf,
   sendSmsIntf,
-  getCaptialAccountIntf
+  getCaptialAccountIntf,
+  forgetPWDIntf
 }

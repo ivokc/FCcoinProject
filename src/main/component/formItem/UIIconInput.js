@@ -41,12 +41,13 @@ export default class UIIconInput extends React.Component {
   }
 
   handleActionPress = () => {
-    this.startTimer();
-    this.setState({
-      actionLabel:'重新发送'
-    })
-    this.props.handleActionPress();
-
+    let result = this.props.handleActionPress();
+    if (result) {
+      this.startTimer();
+      this.setState({
+        actionLabel:'重新发送'
+      })
+    }
   }
 
   renderAction = () => {

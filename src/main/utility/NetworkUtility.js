@@ -1,8 +1,8 @@
 const NetworkUtility = {
 
   async getRequest(url, params){
-    Myloading.show();
-
+    Mymessage.showLoading();
+    
     if (params) {  
       let paramsArray = [];  
       //拼接参数  
@@ -20,29 +20,30 @@ const NetworkUtility = {
           setTimeout(() => reject(new Error('request timeout')), Constant.timeout);
       })
     ]).then((response)=> {
-      Myloading.hide();
-
       let bodyText = JSON.parse(response._bodyText)
       // console.log('getRequest----response',response);
       if (response.status === 200) {
         if (bodyText.result === 'login') {
+          Mymessage.hide();
           //session超时
           Just.clearAuthData();
           return Promise.reject('session超时');
         }else if (bodyText.result !== 'true') {
           //普通错误
         //  console.log('getRequest----bodyText.message',bodyText.message);
-          Mymessage.show(bodyText.message);
+          Mymessage.showMsg(bodyText.message);
           return Promise.reject(bodyText.message);
         }
+        Mymessage.hide();
         return Promise.resolve(bodyText);
       }else {
-        //('getRequest----error',bodyText.message);
+        Mymessage.hide();
+        // console.log('getRequest----error',bodyText.message);
         return Promise.reject(response._bodyText.message);
       }
     },(error) => {
-      Myloading.hide();
-      //('getRequest111----error',error.message);
+      Mymessage.showMsg('服务器超时');
+      // console.log('getRequest111----error',error.message);
       return Promise.reject(error);
     });
   },

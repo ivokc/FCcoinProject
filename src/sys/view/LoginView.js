@@ -14,6 +14,7 @@ export default class LoginView extends React.Component {
   handleLogin = () => {
     let {username,password} = this.state;
     
+    
     this.props.handleLogin({username,password});
   }
   validateForm = () => {
@@ -46,7 +47,7 @@ export default class LoginView extends React.Component {
 
           <View style={styles.row} >
             <Text style={styles.clickText} onPress={() => this.props.navigation.navigate('Regist')}>注册账号</Text>
-            <Text style={styles.clickText} onPress={() => {Mydialog.show()}}>忘记密码</Text>
+            <Text style={styles.clickText} onPress={() => this.props.navigation.navigate('ForgetPwd')}>忘记密码</Text>
           </View>
         </View>
 

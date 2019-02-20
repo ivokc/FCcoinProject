@@ -12,7 +12,7 @@ import {
     View,Image,ScrollView,Picker
 } from 'react-native';
 
-import {UITextInput,UIButton} from '../../../main/component/UIComponents'
+import {UITextInput,UIButton,UILabelPicker} from '../../../main/component/UIComponents'
 
 
 const defaultProps = {
@@ -58,9 +58,18 @@ export default class PayWayView extends PureComponent {
 
     render() {
       const {BTDatas} = this.props;
-      // //('2222222222222222',this.props)
+      console.log('2222222222222222',this.props.cardNumber)
       // const Array=[{label:'1',value:'1'},{label:'2',value:'2'}]
-      // //('2222222222222222',BTDatas)
+      // console.log('2222222222222222',BTDatas)
+        let pickerData = [];
+      if(BTDatas){
+        pickerData = Object.keys(BTDatas).map((ele) => {
+          return {
+            text:BTDatas[ele].label,
+            value:BTDatas[ele].value,
+          }
+        })
+      }
         return (
 
            <View style={styles.container}>
@@ -73,11 +82,15 @@ export default class PayWayView extends PureComponent {
                       </View>
                       <View style={styles.listRightView}>
                           <UITextInput  placeholder='请输入充值数量'
+                            value={this.props.total}
                             keyboardType={'numeric'}
                               textInputstyles={styles.textInputStyle}
                               onChangeText={(text) =>  this.props.fcInput(text)}/>
                       </View>
-                        <Text style={styles.bodyText}>个</Text>
+                     
+                      <Text style={styles.bodyText}>个</Text>
+                
+                        
                     </View>
 
 
@@ -86,12 +99,15 @@ export default class PayWayView extends PureComponent {
 
                     <View style={styles.listView}>
                       <View style={styles.listLeftView}>
-                        <Text style={styles.bodyText2}>交易总额:</Text>
+                        <Text style={styles.bodyText2}>交易总金额:</Text>
                       </View>
                       <View style={styles.listRightView2}>
                         <Text style={styles.bodyText2}>{this.props.total}</Text>
                       </View>
+                      <View style={styles.listRightView3}>
                       <Text style={styles.bodyText2}>元</Text>
+                      </View>
+                      
                     </View>
 
 
@@ -108,19 +124,13 @@ export default class PayWayView extends PureComponent {
               {this.props.bankCard==true?
                 <View>
                 <View style={styles.ScrollableLayout2}>
-                      <View style={styles.listView}>
-                          <Picker
-                           style={{width:350}}
-                           selectedValue={this.props.cardNumber}
-                           onValueChange={(value,itemIndex) => this.props.handleChoosePress(value,itemIndex)}>
-                           {
 
-                              BTDatas.map((item)=>  <Picker.Item label={item.label} value={item.value} key={item}/>)
-                          }
 
-                         </Picker>
 
-                   </View>
+                           <UILabelPicker label='银行卡' data={pickerData} selectedValue={this.props.bankName}
+                              onValueChange={(value,itemIndex) => this.props.handleChoosePress(value,itemIndex)}/>
+
+
                </View>
                <View style={styles.bottomView3}>
                  <View style={styles.buttonLayoutStyle}>
@@ -253,11 +263,17 @@ const styles = StyleSheet.create({
     width:Constant.deviceWidth*0.5,
   },
   listRightView:{
-    width:Constant.deviceWidth*0.39,
+    width:Constant.deviceWidth*0.38,
   },
   listRightView2:{
-    width:Constant.deviceWidth*0.36,
-    marginLeft:13
+    width:Constant.deviceWidth*0.35,
+    marginLeft:16,
+  },
+  listRightView3:{
+    width:Constant.deviceWidth*0.91,
+    marginRight:3,
+    paddingRight:3,
+    // backgroundColor:'#726DFE',
   },
   button: {
     width: Constant.deviceWidth*0.7,

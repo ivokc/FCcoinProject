@@ -67,11 +67,11 @@ class PayContainer extends PureComponent {
                     //('~~~~~~~rechargeTask~~~~~~~',response)
                     clearInterval(this.timer);
 
-                     // Mymessage.show(response.message)
+                     // Mymessage.showMsg(response.message)
                      if(response.result=='false'||response.result==false){
                         throw new Error(response.message)
                      }else {
-                       Mymessage.show('您的订单正在确认，请稍后查看')
+                       Mymessage.showMsg('您的订单正在确认，请稍后查看')
 
                                setTimeout(() =>{
                                   this.props.navigation.navigate('PayList')
@@ -89,7 +89,7 @@ class PayContainer extends PureComponent {
                 }).catch((error) => {
                   // Just.dismissLoading();
                   // Just.ErrorHandler(error,() => { this.handleLogin() });/
-                   Mymessage.show(error)
+                   Mymessage.showMsg(error)
                   //('~~~~~~~error~~~~~~~',error)
                });
       }

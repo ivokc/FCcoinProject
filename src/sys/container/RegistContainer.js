@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import RegistView from '../view/RegistView';
-import {sendSmsIntf} from '../vendor/Intf';
 
 
 const handleNextStep = async ({params,dispatch,ownProps}) => {

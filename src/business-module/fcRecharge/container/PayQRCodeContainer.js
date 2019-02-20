@@ -45,17 +45,17 @@ class PayQRCodeContainer extends PureComponent {
 
      fcInput=(value)=>{
        //('~~~~~~~value~~~~~~~',value)
-       this.setState({total:value})
+       this.setState({total:value.replace(/[^\d]+/, '')})
      }
 
      handleAgreePress=()=>{
         // //('~~~~~~~44444444444444~~~~~~~')
           if(Regex.intege1.test(this.state.total)){
 
-            if(this.state.total<100){
-               Mymessage.show('充值最小为100')
-               return
-            }
+            // if(this.state.total<100){
+            //    Mymessage.showMsg('充值最小为100')
+            //    return
+            // }
 
             let qrcode = this.props.navigation.getParam('qrcode','');
               // let qrcode = this.state.merchantOrderCode
@@ -84,11 +84,11 @@ class PayQRCodeContainer extends PureComponent {
             }).catch((error) => {
               // Just.dismissLoading();
               // Just.ErrorHandler(error,() => { this.handleLogin() });/
-               Mymessage.show(error)
+               Mymessage.showMsg(error)
               //('~~~~~~~error~~~~~~~',error)
            });
           }else {
-             Mymessage.show('充值金额不正确')
+             Mymessage.showMsg('充值金额不正确')
           }
 
      }

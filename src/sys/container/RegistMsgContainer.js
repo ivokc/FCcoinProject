@@ -11,7 +11,7 @@ const handleUserRegister = async ({params,dispatch,ownProps}) => {
 
     let result = await userRegisterIntf(registerInfo);
     //('handleUserRegister',result);
-    Mymessage.show('注册成功');
+    Mymessage.showMsg('注册成功');
     ownProps.navigation.navigate('Login');
   }catch(error){
     //('handleUserRegister|error',error);

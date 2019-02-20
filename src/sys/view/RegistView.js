@@ -31,13 +31,13 @@ export default class RegistView extends React.Component {
   handleNextStep = () => {
     let {password,userName,mobile,email} = this.state;
     if(!Regex.mobile.test(mobile)){
-      Mymessage.show('手机号格式不正确');
+      Mymessage.showMsg('手机号格式不正确');
       return false
     }else if( !Regex.email.test(email)) {
-      Mymessage.show('邮箱格式不正确');
+      Mymessage.showMsg('邮箱格式不正确');
       return false;
     }else if(password.length > 12 || userName.length > 12 ){
-      Mymessage.show('用户名，密码不能超过12位');
+      Mymessage.showMsg('用户名，密码不能超过12位');
       return false;
     }
     this.props.handleNextStep(this.state);

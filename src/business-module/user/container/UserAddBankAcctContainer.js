@@ -23,7 +23,7 @@ const handleAddBankDatas = async ({params,dispatch,ownProps}) => {
     if(result.result !== 'true'){
       throw new Error(result.message);
     }
-    ownProps.navigation.navigate('Home');
+    ownProps.navigation.navigate('UserBankAcct');
   } catch (error) {
     //('userAddBankAcctIniterror',error);
     

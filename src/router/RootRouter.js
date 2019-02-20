@@ -7,6 +7,7 @@ import HomeContainer from "../sys/container/HomeContainer";
 import LoginContainer from "../sys/container/LoginContainer";
 import RegistContainer from "../sys/container/RegistContainer";
 import RegistMsgContainer from "../sys/container/RegistMsgContainer";
+import ForgetPwdContainer from "../sys/container/ForgetPwdContainer";
 import AuthLoading from "../sys/AuthLoading";
 import HelpView from '../sys/view/HelpView';
 
@@ -25,7 +26,6 @@ import PayQRCodeContainer from "../business-module/fcRecharge/container/PayQRCod
 import UserChangePwdContainer from '../business-module/user/container/UserChangePwdContainer';
 import UserBankAcctContainer from '../business-module/user/container/UserBankAcctContainer';
 import UserAddBankAcctContainer from '../business-module/user/container/UserAddBankAcctContainer';
-import UserWechatAcctContainer from '../business-module/user/container/UserWechatAcctContainer';
 
 
 // const UserAcctStack = createMaterialTopTabNavigator({
@@ -131,14 +131,16 @@ const AppStack = createStackNavigator({
 });
 
 const AuthStack = createStackNavigator(
-  { Login: {
-    screen: LoginContainer,
-    navigationOptions: {
-      header: null,//单独配置HomeStack全部不要header
-    }
-  },
+  { 
+    Login: {
+      screen: LoginContainer,
+      navigationOptions: {
+        header: null,//单独配置HomeStack全部不要header
+      }
+    },
     Regist:RegistContainer,
     RegistMsg: RegistMsgContainer,
+    ForgetPwd: ForgetPwdContainer
   },
   {
 

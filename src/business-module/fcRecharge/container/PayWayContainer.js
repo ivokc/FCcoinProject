@@ -22,6 +22,7 @@ const defaultState = {
     cardCode:[],
     total:'',
     bankCard:false,
+    bankName:'',
 };
 @CommonHead('充值')
 @AutoHideKeyboard
@@ -36,8 +37,8 @@ class PayWayContainer extends PureComponent {
     }
     componentWillMount(){
         this.getList()
-         // //('~~~~~~~pullLoad~~~~~~~')
-                 // Mymessage.show('11111111111')
+         // console.log('~~~~~~~pullLoad~~~~~~~')
+                 // Mymessage.showMsg('11111111111')
     }
 
     componentDidMount() {
@@ -49,7 +50,7 @@ class PayWayContainer extends PureComponent {
 
        getBankDatasTask(this.props.sessionId).then((response) =>{
 
-           //('~~~~~~~getBankDatasTask~~~~~~~',response.data.list)
+           console.log('~~~~~~~getBankDatasTask~~~~~~~',response.data.list)
 
            let tempBTDatas=[]
            let BTData={}
@@ -59,8 +60,11 @@ class PayWayContainer extends PureComponent {
              for(var i = 0; i < response.data.list.length; i++){
 
                   BTData={
-                    label:response.data.list[i].bankName+'                                    '+response.data.list[i].cardNumber,
-                    value:response.data.list[i].bankName+'                                    '+response.data.list[i].cardNumber,
+                    label:response.data.list[i].bankName+' '+response.data.list[i].cardNumber,
+                    value:response.data.list[i].bankName+' '+response.data.list[i].cardNumber,
+                  }
+                  if(i==0){
+                     this.setState({bankName:BTData.label})
                   }
                   tempBTDatas.push(BTData)
                   tempcardNumbers.push(response.data.list[i].cardNumber)
@@ -71,6 +75,7 @@ class PayWayContainer extends PureComponent {
                this.setState({bankCard: true})
                this.setState({cardNumber:response.data.list[0].cardCode})
                this.setState({cardCode: [...tempCardCode]})
+
            }else {
 
               //未绑定银行卡，跳转到开卡界面！！！！！！！！！！！
@@ -82,23 +87,24 @@ class PayWayContainer extends PureComponent {
        }).catch((error) => {
          // Just.dismissLoading();
          // Just.ErrorHandler(error,() => { this.handleLogin() });/
-         Mymessage.show(error)
-         //('~~~~~~~error~~~~~~~',error)
+         Mymessage.showMsg(error)
+         console.log('~~~~~~~error~~~~~~~',error)
       });
 
      }
 
      handleChoosePress=(value,itemIndex)=>{
-       // //('~~~~~~~value~~~~~~~',value)
-       //        //('~~~~~~~itemIndex~~~~~~~',itemIndex)
-       //          //('~~~~~~~itemIndex~~~~~~~',this.state.cardNumbers[itemIndex])
-       //  //('~~~~~~~itemIndex~~~~~~~',this.state.cardCode[itemIndex])
+       console.log('~~~~~~~value~~~~~~~',value)
+       //        console.log('~~~~~~~itemIndex~~~~~~~',itemIndex)
+       //          console.log('~~~~~~~itemIndex~~~~~~~',this.state.cardNumbers[itemIndex])
+        console.log('~~~~~~~itemIndex~~~~~~~',this.state.cardCode[itemIndex])
         this.setState({cardNumber:this.state.cardCode[itemIndex]})
+          this.setState({bankName:value})
      }
 
      fcInput=(value)=>{
-       //('~~~~~~~value~~~~~~~',value)
-         this.setState({total:value})
+       console.log('~~~~~~~value~~~~~~~',value)
+        this.setState({total:value.replace(/[^\d]+/, '')})
 
      }
 
@@ -107,17 +113,17 @@ class PayWayContainer extends PureComponent {
      }
 
      handleAgreePress=()=>{
-        //('~~~~~~~44444444444444~~~~~~~')
-        //('~~~~~~~value~~~~~~~',Regex.intege1.test(this.state.total))
+        console.log('~~~~~~~44444444444444~~~~~~~')
+        console.log('~~~~~~~value~~~~~~~',Regex.intege1.test(this.state.total))
         if(Regex.intege1.test(this.state.total)){
             if(this.state.total<100){
-               Mymessage.show('充值最小为100')
+               Mymessage.showMsg('充值最小为100')
                return
             }
 
                 creatRechargeOrderTask(this.props.sessionId,this.state.total,this.state.cardNumber).then((response) =>{
 
-                    //('~~~~~~~creatRechargeOrderTask~~~~~~~',response)
+                    console.log('~~~~~~~creatRechargeOrderTask~~~~~~~',response)
                     if(response.result=='false'||response.result==false){
                        throw new Error(response.message)
                     }else {
@@ -139,17 +145,17 @@ class PayWayContainer extends PureComponent {
                 }).catch((error) => {
                   // Just.dismissLoading();
                   // Just.ErrorHandler(error,() => { this.handleLogin() });/
-                   Mymessage.show(error)
-                  //('~~~~~~~error~~~~~~~',error.message)
+                   Mymessage.showMsg(error)
+                  console.log('~~~~~~~error~~~~~~~',error.message)
                });
           }else {
-             Mymessage.show('充值FC数量不正确')
+             Mymessage.showMsg('充值FC数量不正确')
           }
 
      }
 
     render() {
-      // //('33333333333',this.state.BTDatas)
+      // console.log('33333333333',this.state.BTDatas)
 
         return (
             <PayWayView
@@ -162,6 +168,7 @@ class PayWayContainer extends PureComponent {
               handleAgreePress={this.handleAgreePress}
               handleBankPress={this.handleBankPress}
               bankCard={this.state.bankCard}
+              bankName={this.state.bankName}
               />
         );
     }
@@ -170,7 +177,7 @@ class PayWayContainer extends PureComponent {
 PayWayContainer.defaultProps = defaultProps;
 
 function mapStateToProps(state) {
-    // //('111',loginReducer);
+    // console.log('111',loginReducer);
     return {
       sessionId:state.userReducer.sessionid
 

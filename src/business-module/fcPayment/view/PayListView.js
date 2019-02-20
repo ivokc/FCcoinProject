@@ -71,7 +71,7 @@ export default class PayListView extends PureComponent {
                   <ScrollView style={styles.ScrollableLayout}
                   refreshControl={
                     <RefreshControl
-                        refreshing={this.state.isRefreshing}
+                        refreshing={this.props.isRefreshing}
                         onRefresh={this.props.onRefresh.bind(this)}
                         colors={['black','red']}
                         progressBackgroundColor="#ffffff"

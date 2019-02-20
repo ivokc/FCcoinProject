@@ -28,6 +28,7 @@ const defaultState = {
     secretKey:'fpay,fp,com',
     userName:'test001',
     password:'123456',
+    isRefreshing:false,
 };
 @CommonHead('充值明细')
 class PayListContainer extends PureComponent {
@@ -100,8 +101,10 @@ class PayListContainer extends PureComponent {
        }).catch((error) => {
          // Just.dismissLoading();
          // Just.ErrorHandler(error,() => { this.handleLogin() });/
-            Mymessage.show(error)
+            Mymessage.showMsg(error)
          //('~~~~~~~error~~~~~~~',error)
+      }).finally(()=>{
+          this.setState({isRefreshing:false}) 
       });
 
      }
@@ -133,13 +136,17 @@ class PayListContainer extends PureComponent {
 
     //下拉刷新
     onRefresh = () =>{
-      // //('3333333333333')
-
-        setTimeout(() =>{
-
-
+      // alert('3333333333333')?\
+        // console.log('ccccc2222')
+        // Mymessage.showLoading();
+        // setTimeout(() =>{
+        //
+        //   // alert('3333333333333')
+        //    this.getList()
+        // },0);
+           this.setState({isRefreshing:true})
            this.getList()
-        },2000);
+
 
     }
     render() {
@@ -150,7 +157,8 @@ class PayListContainer extends PureComponent {
               navigation={this.props.navigation}
               BTDatas={this.state.BTDatas}
               handleChoosePress={this.handleChoosePress}
-                onRefresh={this.getList}
+              isRefreshing={this.state.isRefreshing}
+                onRefresh={this.onRefresh}
               />
         );
     }

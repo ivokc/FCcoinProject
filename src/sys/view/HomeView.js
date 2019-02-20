@@ -108,7 +108,9 @@ const styles = StyleSheet.create({
   },
   assets:{
     flex:2,
-    padding:20
+    padding:20,
+    paddingTop:40
+
   },
   subAssetsBox:{
     flex:1,

@@ -28,6 +28,7 @@ const defaultState = {
     secretKey:'fpay,fp,com',
     userName:'test001',
     password:'123456',
+    isRefreshing:false,
 };
 @CommonHead('订单支付明细')
 class OrderListContainer extends PureComponent {
@@ -99,6 +100,8 @@ class OrderListContainer extends PureComponent {
          // Just.dismissLoading();
          // Just.ErrorHandler(error,() => { this.handleLogin() });/
          //('~~~~~~~error~~~~~~~',error)
+      }).finally(()=>{
+          this.setState({isRefreshing:false})
       });
 
      }
@@ -108,11 +111,14 @@ class OrderListContainer extends PureComponent {
           onRefresh = () =>{
             // //('3333333333333')
 
-              setTimeout(() =>{
+              // setTimeout(() =>{
 
 
-                 this.getList()
-              },2000);
+
+              // },2000);
+              this.setState({isRefreshing:true})
+              this.getList();
+
 
           }
 
@@ -124,7 +130,8 @@ class OrderListContainer extends PureComponent {
             <OrderListView
               navigation={this.props.navigation}
               BTDatas={this.state.BTDatas}
-              onRefresh={this.getList}
+              onRefresh={this.onRefresh}
+              isRefreshing={this.state.isRefreshing}
               />
         );
     }

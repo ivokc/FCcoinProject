@@ -23,7 +23,7 @@ export default class UIAcctItem extends React.Component {
               </Text>
             </View>
           </TouchableWithoutFeedback> */}
-          <TouchableWithoutFeedback onPress={()=> {this.props.onDeletePress(this.props.acctNo)} }>
+          <TouchableWithoutFeedback onPress={()=> {this.props.onDeletePress(this.props.cardCode)} }>
             <View style={styles.button}>
               <Text style={[styles.buttontext,randomNum == 0 ? {color:'#639AFE'} : {color:'#FD896E'}]}>删除</Text>
             </View>

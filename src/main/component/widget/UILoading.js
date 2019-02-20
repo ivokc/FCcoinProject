@@ -2,7 +2,7 @@ import React from "react";
 import {Modal,ActivityIndicator,StyleSheet,Text,View} from "react-native";
 
 
-export default class UILoading extends React.Component {
+export default class UI extends React.Component {
   constructor(props) {
       super(props);
       this.state = {

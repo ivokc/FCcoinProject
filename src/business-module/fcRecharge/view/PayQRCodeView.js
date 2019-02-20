@@ -51,8 +51,11 @@ export default class PayQRCodeView extends PureComponent {
                       <View style={styles.listRightView}>
                           <UITextInput  placeholder='请输入充值金额'
                                   keyboardType={'numeric'}
+                                  value={this.props.total}
                               textInputstyles={styles.textInputStyle}
                               onChangeText={(text) =>  this.props.fcInput(text)}/>
+
+
                       </View>
                         <Text style={styles.bodyText}>元</Text>
                     </View>

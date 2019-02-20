@@ -3,6 +3,7 @@ global.Url = {
   logout: '/js/a/logout',
   getCaptialAccount: '/js/a/api/getCaptialAccount',
 
+  forgetPWD: '/js/f/api/forgetPWD',
   changePWD:'/js/a/api/changePWD',
   userRegister: '/js/f/api/userRegister',
   sendSms: '/js/f/api/sendSms',

@@ -10,7 +10,18 @@ export default class UserBankAcctView extends React.Component {
     disabled:true
   }
   componentWillMount() {
-    this.props.userBankAcctInit()
+    this.props.userBankAcctInit();
+    this.didBlurSubscription = this.props.navigation.addListener(
+      'willFocus',
+      () => {
+        this.props.userBankAcctInit();
+      }
+    );
+  }
+
+  componentWillUnmount(){
+    // Remove the listener when you are done
+    this.didBlurSubscription.remove();
   }
 
   handleToggleState = (cardCode,state) => {
@@ -36,6 +47,7 @@ export default class UserBankAcctView extends React.Component {
             <UIAcctItem key={index} bankName={acct.bankName} 
               acctType={acct.cardUserName} 
               acctNo={acct.cardNumber}
+              cardCode={acct.cardCode}
               acctStatus={acct.status}
               onToggleStatePress={this.handleToggleState}
               onDeletePress={this.handleDeleteBankDatas}
