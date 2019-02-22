@@ -69,6 +69,8 @@ export default class PayListView extends PureComponent {
 
               <View style={styles.body}>
                   <ScrollView style={styles.ScrollableLayout}
+                  scrollEnabled={!this.props.isRefreshing}
+
                   refreshControl={
                     <RefreshControl
                         refreshing={this.props.isRefreshing}

@@ -71,7 +71,7 @@ const HomeStack = createBottomTabNavigator({
         let imageSrc;
         if (routeName === 'Home') {
           imageSrc = focused ? Img.HomeActive : Img.HomeInactive;
-        } else if (routeName === 'PayList') {
+        } else if (routeName === 'HomePayList') {
           imageSrc = focused ? Img.RechargeActive : Img.RechargeInactive;
         } else {
           imageSrc = focused ? Img.UserActive : Img.UserInactive;

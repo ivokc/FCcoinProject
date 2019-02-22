@@ -27,6 +27,7 @@ global.Img = {
   Help2:require('../../img/Help2.png'),
 
 
+
   HelpIcon:require('../../img/HelpIcon.png'),
   Avator:require('../../img/Avator.png'),
 

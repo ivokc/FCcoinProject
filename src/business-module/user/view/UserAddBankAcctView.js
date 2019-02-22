@@ -66,8 +66,8 @@ export default class UserAddBankAcctView extends React.Component {
         <UILabelInput label='银行账号' placeholder='请输入银行卡号'
           value={this.props.cardNumber}
           keyboardType={'numeric'}
-          onChangeText={(text) => this.setState({cardNumber:text.replace(/[^\d]+/, '')})}/>
-     }
+          onChangeText={(text) => this.setState({cardNumber:text.replace(/[^\d]+/, '')})}
+          />
         <UIButton disabled={!validateOk} style={{margin:20,marginTop:50}} onPress={this.handleAddBankDatas} text='确定'/>
         <View style={{margin:20}}>
           <Text style={styles.warn}>

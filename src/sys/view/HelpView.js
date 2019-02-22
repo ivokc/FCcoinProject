@@ -18,7 +18,7 @@ export default class HelpView extends React.Component {
 const styles = StyleSheet.create({
   imageBackground: {
     width:Constant.deviceWidth ,
-    height:Constant.deviceWidth * 2.7
+    height:Constant.deviceWidth * 5
   }
   
 });

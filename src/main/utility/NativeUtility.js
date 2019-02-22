@@ -5,11 +5,9 @@ const NativeUtility = {
 
   //跳转其他应用
   linking() {
+   
     let url = Platform.OS === 'android' ? 'mqqwpa://im/chat?chat_type=wpa&uin=' + Constant.qqNum :
-    `mqq://im/chat?chat_mqq://im/chat?chat_type=wpa&uin=${Constant.qqNum}&version=1&src_type=wed`;
-    // let url = 'mqqwpa://im/chat?chat_type=wpa&uin=' + Constant.qqNum;
-    // let url = `mqq://im/chat?chat_mqq://im/chat?chat_type=wpa&uin=${Constant.qqNum}&version=1&src_type=wed`
-    console.log('1333333',url);
+    `mqq://im/chat?chat_type=wpa&uin=${Constant.qqNum}&version=1&src_type=web`;
     
     Linking.canOpenURL(url).then(supported => {
       if (supported) {
